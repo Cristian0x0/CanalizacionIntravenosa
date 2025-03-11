@@ -357,6 +357,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 249522834016810192, guid: 0e7430168d848ed468262e83b6f7a69a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 496653435236527907, guid: 0e7430168d848ed468262e83b6f7a69a, type: 3}
+      propertyPath: SnapRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282134165131677923, guid: 0e7430168d848ed468262e83b6f7a69a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2329685460771126620, guid: 0e7430168d848ed468262e83b6f7a69a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3487700171338305086, guid: 0e7430168d848ed468262e83b6f7a69a, type: 3}
       propertyPath: controllerDrivenHandPosesType
       value: 2
@@ -364,6 +380,10 @@ PrefabInstance:
     - target: {fileID: 3487700171338305086, guid: 0e7430168d848ed468262e83b6f7a69a, type: 3}
       propertyPath: SimultaneousHandsAndControllersEnabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668675704727066991, guid: 0e7430168d848ed468262e83b6f7a69a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3693000602879722960, guid: 0e7430168d848ed468262e83b6f7a69a, type: 3}
       propertyPath: m_LocalPosition.x
