@@ -5,6 +5,17 @@ TagManager:
   serializedVersion: 3
   tags:
   - Guantes
+  - QDSUITextSecondaryColor
+  - QDSUIIcon
+  - QDSUIToggleButton
+  - QDSUISecondaryButton
+  - QDSUIBorderlessButton
+  - QDSUIToggleBorderlessButton
+  - QDSUITooltip
+  - QDSUISharedThemeColor
+  - QDSUIToggleSwitch
+  - QDSUIAccentColor
+  - Suelo
   layers:
   - Default
   - TransparentFX
