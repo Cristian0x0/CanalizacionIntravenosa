@@ -36,13 +36,16 @@ public class ColisionSueroSoporte : MonoBehaviour
     {
         if (boteEnZona != null)
         {
+            boteEnZona.GetComponent<SueroGrabbable>().enabled = false;
 
-            //Transform puntoMasCercano = ObtenerPuntoMasCercano(boteEnZona.transform.position);
-            Debug.Log(boteEnZona.transform.position);
-            boteEnZona.transform.position = puntosColocacion[0].position;
-            Debug.Log(boteEnZona.transform.position);
-            boteEnZona.transform.rotation = puntosColocacion[0].rotation;
-            Debug.Log("Bote soltado");
+            Transform puntoMasCercano = ObtenerPuntoMasCercano(boteEnZona.transform.position);
+            
+            boteEnZona.transform.parent = puntoMasCercano;
+            boteEnZona.transform.localPosition = Vector3.zero;
+
+            boteEnZona.transform.rotation = puntoMasCercano.rotation;
+
+            boteEnZona.GetComponent<SueroGrabbable>().enabled = true;
         }
     }
 
