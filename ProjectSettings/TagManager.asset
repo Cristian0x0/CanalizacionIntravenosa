@@ -16,6 +16,8 @@ TagManager:
   - QDSUIToggleSwitch
   - QDSUIAccentColor
   - Suelo
+  - SamplesInfoPanel
+  - Suero
   layers:
   - Default
   - TransparentFX

@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 1144862986187260945}
   m_Layer: 0
   m_Name: Suero
-  m_TagString: Untagged
+  m_TagString: Suero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
