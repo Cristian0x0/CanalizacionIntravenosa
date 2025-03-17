@@ -18,6 +18,7 @@ TagManager:
   - Suelo
   - SamplesInfoPanel
   - Suero
+  - SistemaSuero
   layers:
   - Default
   - TransparentFX
