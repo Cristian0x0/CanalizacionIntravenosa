@@ -412,6 +412,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   estadoJuego: 0
+  LEDPantallas: {fileID: 2100000, guid: 04f77b0621c67244793a9666d74ea4d5, type: 2}
+  Instrucciones:
+  - {fileID: 2800000, guid: d42a499cf2ff8764a8778c60458710c5, type: 3}
+  - {fileID: 2800000, guid: 96d85ae18b796b640a68477c5a4c998a, type: 3}
+  - {fileID: 2800000, guid: d2318f43f90748341a7bdd302f1c551d, type: 3}
+  - {fileID: 2800000, guid: 1fc259f6415ddb247a2a68d4db724a7d, type: 3}
+  - {fileID: 2800000, guid: 100ed37ce6531dd4ebf4fbb5ed7d79cf, type: 3}
+  - {fileID: 2800000, guid: 2364e121ffa214a44b93a849f89f0011, type: 3}
+  - {fileID: 2800000, guid: 3768d970ebddc28439032fee789652c8, type: 3}
+  - {fileID: 2800000, guid: c0bea7ad147bcfd4ea0d4d59bc706ba4, type: 3}
+  - {fileID: 2800000, guid: eba584e66f4a85746a24fe236819c0bd, type: 3}
+  - {fileID: 2800000, guid: 8719db62b9ef77f47ad407c647e47a35, type: 3}
+  - {fileID: 2800000, guid: 8424dfc67554a7f4f975ec385b62ede4, type: 3}
+  - {fileID: 2800000, guid: 68dd72f5d5aaa824e90f301d62d83a1f, type: 3}
+  - {fileID: 2800000, guid: 29ddf47139731534bacbf1d3f1c1c8d8, type: 3}
+  - {fileID: 2800000, guid: 04651dfe8f6182c4d814e6768b959238, type: 3}
+  - {fileID: 2800000, guid: 27585b5af75215a478a42041367dd3e0, type: 3}
+  - {fileID: 2800000, guid: 88ae62e6af67f9b45be5ee500e3bca8c, type: 3}
+  - {fileID: 2800000, guid: f378d853b94168d4bb45d529660fffd8, type: 3}
+  - {fileID: 2800000, guid: 3244b258645a0b849a5c02e4f4801cc9, type: 3}
 --- !u!1001 &101468899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2387,7 +2407,7 @@ GameObject:
   - component: {fileID: 584205810}
   - component: {fileID: 584205809}
   m_Layer: 0
-  m_Name: polySurface2
+  m_Name: LEDPantalla2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6766,7 +6786,7 @@ GameObject:
   - component: {fileID: 5293082261039167548}
   - component: {fileID: 3124569626564792706}
   m_Layer: 0
-  m_Name: polySurface2
+  m_Name: LEDPantalla1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,4 +1,5 @@
 using Oculus.Interaction;
+using System;
 using UnityEngine;
 
 public class ColisionSueroSoporte : MonoBehaviour
@@ -7,9 +8,24 @@ public class ColisionSueroSoporte : MonoBehaviour
     private GameObject boteEnZona;
     private Rigidbody rb;
 
+    private bool ScriptActivo = false;
+
+    private void Awake()
+    {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
+    }
+
+    private void ComprobarActivacion(GameState state)
+    {
+        if(state == GameState.PrepararSistema)
+        {
+            ScriptActivo = true;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Suero"))
+        if (other.CompareTag("Suero") && ScriptActivo)
         {
             boteEnZona = other.gameObject; // Guardamos referencia al bote
             rb = boteEnZona.GetComponent<Rigidbody>();
@@ -22,7 +38,7 @@ public class ColisionSueroSoporte : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Suero") && boteEnZona == other.gameObject)
+        if (other.CompareTag("Suero") && boteEnZona == other.gameObject && ScriptActivo)
         {
             if (rb != null)
             {
@@ -34,7 +50,7 @@ public class ColisionSueroSoporte : MonoBehaviour
 
     public void SoltarBote()
     {
-        if (boteEnZona != null)
+        if (boteEnZona != null && ScriptActivo)
         {
             boteEnZona.GetComponent<SueroGrabbable>().enabled = false;
 
