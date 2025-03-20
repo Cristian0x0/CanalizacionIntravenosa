@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
     public void CambiarEstadoJuego(GameState nuevoEstado)
     {
         estadoJuego = nuevoEstado;
-        Debug.Log("Preparar sistema");
 
         switch (nuevoEstado)
         {

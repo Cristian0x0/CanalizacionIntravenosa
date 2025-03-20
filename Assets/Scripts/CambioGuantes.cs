@@ -27,7 +27,6 @@ public class CambioGuantes : MonoBehaviour
         
         if (other.CompareTag("Guantes"))
         {
-            Debug.Log(objectRenderer.material);
             if (objectRenderer != null && objectRenderer.material == MaterialDefault)
             {
                 

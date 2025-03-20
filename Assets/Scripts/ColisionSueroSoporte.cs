@@ -10,6 +10,9 @@ public class ColisionSueroSoporte : MonoBehaviour
 
     private bool ScriptActivo = false;
 
+    [HideInInspector]
+    public bool boteColocado = false;
+
     private void Awake()
     {
         GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
@@ -45,6 +48,7 @@ public class ColisionSueroSoporte : MonoBehaviour
                 rb.UnlockKinematic();
             }
             boteEnZona = null; // Si el bote sale, lo olvidamos
+            boteColocado = false;
         }
     }
 
@@ -62,6 +66,8 @@ public class ColisionSueroSoporte : MonoBehaviour
             boteEnZona.transform.rotation = puntoMasCercano.rotation;
 
             boteEnZona.GetComponent<SueroGrabbable>().enabled = true;
+
+            boteColocado = true;
         }
     }
 

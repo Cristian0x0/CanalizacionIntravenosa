@@ -7,9 +7,11 @@ public class ColisionSistemaSuero : MonoBehaviour
     private GameObject sistema;
     private Rigidbody rb;
 
+    public ColisionSueroSoporte sePuedeConectar;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("SistemaSuero"))
+        if (other.CompareTag("SistemaSuero") && sePuedeConectar.boteColocado)
         {
             sistema = other.gameObject; // Guardamos referencia al bote
             rb = sistema.GetComponent<Rigidbody>();
@@ -22,7 +24,7 @@ public class ColisionSistemaSuero : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("SistemaSuero") && sistema == other.gameObject)
+        if (other.CompareTag("SistemaSuero") && sistema == other.gameObject && sePuedeConectar.boteColocado)
         {
             if (rb != null)
             {
@@ -34,7 +36,7 @@ public class ColisionSistemaSuero : MonoBehaviour
 
     public void SoltarBote()
     {
-        if (sistema != null)
+        if (sistema != null && sePuedeConectar.boteColocado)
         {
             sistema.GetComponent<SistemaGrabbable>().enabled = false;
 
@@ -45,6 +47,8 @@ public class ColisionSistemaSuero : MonoBehaviour
             sistema.transform.rotation = puntoColocacion.rotation;
 
             sistema.GetComponent<SistemaGrabbable>().enabled = true;
+
+            GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.ColocarCompresor);
         }
     }
 }

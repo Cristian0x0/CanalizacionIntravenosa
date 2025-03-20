@@ -8,7 +8,7 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
     {
         if (cantidadAlcohol == 1 && cantidadCanula == 1 && cantidadLlaves == 1 && cantidadAposito == 1)
         {
-            Debug.Log("Objetos completos");
+            GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.PrepararSistema);
         }
     }
 
@@ -31,11 +31,6 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         {
             cantidadLlaves++;
         }
-
-        Debug.Log(cantidadAlcohol);
-        Debug.Log(cantidadCanula);
-        Debug.Log(cantidadLlaves);
-        Debug.Log(cantidadAposito);
     }
 
     private void OnTriggerExit(Collider other)
