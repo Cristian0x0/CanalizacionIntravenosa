@@ -19,7 +19,8 @@ public class CintaGrabbable : MonoBehaviour
         grabbable = GetComponent<Grabbable>();
         grabbable.Agarrado = false;
         meshRenderer = transform.Find("Visuals/EsparadrapoMesh/Mesh")?.GetComponent<MeshRenderer>();
-        
+        meshRenderer.enabled = false;
+
         Debug.Log("Estoy siendo creado");
     }
 
@@ -36,7 +37,6 @@ public class CintaGrabbable : MonoBehaviour
             meshRenderer.enabled = true;
             GameObject nuevoTrozo = Instantiate(TrozoEsparatrapo, Spawn.position, Quaternion.identity);
             nuevoTrozo.transform.SetParent(transform.parent);
-            rb.isKinematic = false;
         }
     }
 
