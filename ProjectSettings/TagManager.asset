@@ -19,6 +19,11 @@ TagManager:
   - SamplesInfoPanel
   - Suero
   - SistemaSuero
+  - Alcohol
+  - Aposito
+  - Canula
+  - Esparadrapo
+  - Llave3Pasos
   layers:
   - Default
   - TransparentFX
