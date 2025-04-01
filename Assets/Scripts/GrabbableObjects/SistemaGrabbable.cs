@@ -220,7 +220,7 @@ namespace Oculus.Interaction
                     EndTransform();
                     break;
                 case PointerEventType.Unselect:
-                    soporte.SoltarBote();
+                    soporte.SoltarPincho();
                     Agarrado = false;
                     ForceMove(evt);
                     EndTransform();
