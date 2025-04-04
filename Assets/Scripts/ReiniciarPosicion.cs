@@ -51,7 +51,6 @@ public class ReiniciarPosicion : MonoBehaviour
 
                 if (rbOpcional != null)
                 {
-                    Debug.Log("Reiniciando Rigidbody opcional");
                     rbOpcional.linearVelocity = Vector3.zero;
                     rbOpcional.angularVelocity = Vector3.zero;
                 }
