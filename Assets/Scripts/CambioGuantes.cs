@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,20 +7,15 @@ public class CambioGuantes : MonoBehaviour
 {
 
     public Material nuevoMaterial;
-    private Material MaterialDefault;
+    [SerializeField] private Renderer SegundoObjeto;
+    private Material materialDefault;
     private Renderer objectRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         objectRenderer = GetComponent<Renderer>();
-        MaterialDefault = objectRenderer.material;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        materialDefault = objectRenderer.sharedMaterial;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -27,19 +23,17 @@ public class CambioGuantes : MonoBehaviour
         
         if (other.CompareTag("Guantes"))
         {
-            if (objectRenderer != null && objectRenderer.material == MaterialDefault)
+            Debug.Log("Guanteeeeees");
+            if (objectRenderer != null)
             {
-                
-                objectRenderer.material = nuevoMaterial;
-                nuevoMaterial = objectRenderer.material;
-                
-            }
-            else if (objectRenderer != null && objectRenderer.material == nuevoMaterial)
-            {
- 
-                objectRenderer.material = MaterialDefault;
-                MaterialDefault = objectRenderer.material;
+                bool esDefault = objectRenderer.sharedMaterial == materialDefault;
 
+                objectRenderer.sharedMaterial = esDefault ? nuevoMaterial : materialDefault;
+
+                if (SegundoObjeto != null)
+                {
+                    SegundoObjeto.sharedMaterial = esDefault ? nuevoMaterial : materialDefault;
+                }
             }
         }
     }
