@@ -8,6 +8,7 @@ public class ColisionSistemaSuero : MonoBehaviour
     private Rigidbody rb;
 
     public ColisionSueroSoporte sePuedeConectar;
+    [HideInInspector] public bool pinchoConectado = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -49,7 +50,7 @@ public class ColisionSistemaSuero : MonoBehaviour
 
             sistema.GetComponent<SistemaGrabbable>().enabled = true;
 
-            GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.ColocarCompresor);
+            pinchoConectado = true;
         }
     }
 }

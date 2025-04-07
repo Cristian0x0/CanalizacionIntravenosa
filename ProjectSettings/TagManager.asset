@@ -24,6 +24,7 @@ TagManager:
   - Canula
   - Esparadrapo
   - Llave3Pasos
+  - Torniquete
   layers:
   - Default
   - TransparentFX
