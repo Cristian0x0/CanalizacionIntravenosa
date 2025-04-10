@@ -10,6 +10,7 @@ public class CanulaController : MonoBehaviour
     void Start()
     {
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Tapones"), LayerMask.NameToLayer("Manos"), true);
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Canula"), LayerMask.NameToLayer("Manos"), true);
         myGrab = GetComponent<Grabbable>();
         parent = transform.parent;
     }
