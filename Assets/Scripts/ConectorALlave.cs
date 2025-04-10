@@ -11,6 +11,7 @@ public class ConectorALlave : MonoBehaviour
     [SerializeField] private SoltarConectorSistema soltarConectorSistema;
     private SoltarConectorSistema soltarConectorSistema2;
     private Grabbable grabbable;
+    private Grabbable myGrab;
     private ReiniciarPosicion reiniciarPosicion;
     private Rigidbody rb;
 
@@ -19,6 +20,7 @@ public class ConectorALlave : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        myGrab = GetComponent<Grabbable>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -28,6 +30,7 @@ public class ConectorALlave : MonoBehaviour
             grabbable = other.GetComponent<Grabbable>();
             if (grabbable != null)
             {
+                myGrab.enabled = false;
                 grabbable.enabled = false; // Desactivar el Grabbable
                 StartCoroutine(EsperarUnSegundo());
             }
@@ -58,6 +61,8 @@ public class ConectorALlave : MonoBehaviour
         }
     }
 
+
+
     IEnumerator EsperarUnSegundo()
     {
         // Esperamos 1 segundo
@@ -65,6 +70,7 @@ public class ConectorALlave : MonoBehaviour
 
         // Después de 1 segundo, se ejecuta este código
         grabbable.enabled = true;
+        myGrab.enabled = true;
     }
 }
 
