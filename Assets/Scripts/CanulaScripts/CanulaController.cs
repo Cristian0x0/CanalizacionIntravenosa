@@ -5,30 +5,35 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class CanulaController : MonoBehaviour
 {
     private Grabbable myGrab;
-    private bool endScript = false;
+    private Transform parent;
 
     void Start()
     {
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Tapones"), LayerMask.NameToLayer("Manos"), true);
         myGrab = GetComponent<Grabbable>();
+        parent = transform.parent;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (endScript) return;
-
         if (myGrab.Agarrado)
         {
             Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Tapones"), LayerMask.NameToLayer("Manos"), false);
-            endScript = true;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Suelo"))
+        if (collision.gameObject.CompareTag("Suelo") && parent != null)
         {
+            foreach (Transform child in parent)
+            {
+                if(child != transform)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+            }
             Destroy(gameObject);
         }
     }

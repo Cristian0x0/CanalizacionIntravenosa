@@ -4,8 +4,7 @@ using UnityEngine;
 public class KinematicCap : MonoBehaviour
 {
 
-    [SerializeField] private Transform parent;
-
+    private Transform abuelo;
     private Grabbable myGrab;
     private Rigidbody myRigidbody;
     private bool canDisableKinematic = false;
@@ -15,6 +14,7 @@ public class KinematicCap : MonoBehaviour
     {
         myGrab = GetComponent<Grabbable>();
         myRigidbody = GetComponent<Rigidbody>();
+        abuelo = transform.parent?.parent;
     }
 
     // Update is called once per frame
@@ -24,8 +24,9 @@ public class KinematicCap : MonoBehaviour
 
         if (myGrab.Agarrado)
         {
+
             canDisableKinematic = true;
-            transform.SetParent(parent);
+            if(abuelo != null) transform.SetParent(abuelo);
         }
         else
         {
