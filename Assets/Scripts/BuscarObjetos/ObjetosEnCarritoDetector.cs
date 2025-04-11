@@ -6,7 +6,7 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
 
     private void Update()
     {
-        if (cantidadAlcohol == 1 && cantidadCanula == 1 && cantidadLlaves == 1 && cantidadAposito == 1)
+        if (cantidadAlcohol != 0 && cantidadCanula != 0 && cantidadLlaves != 0 && cantidadAposito != 0)
         {
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.PrepararSistema);
         }
@@ -15,21 +15,26 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
+
         if (other.CompareTag("Alcohol"))
         {
             cantidadAlcohol++;
+            Debug.Log("entra" + other.name);
         }
         else if (other.CompareTag("Aposito"))
         {
             cantidadAposito++;
+            Debug.Log("entra" + other.name);
         }
         else if (other.CompareTag("Canula"))
         {
             cantidadCanula++;
+            Debug.Log("entra" + other.name);
         }
         else if (other.CompareTag("Llave3Pasos"))
         {
             cantidadLlaves++;
+            Debug.Log("entra" + other.name);
         }
     }
 
