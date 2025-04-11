@@ -15,6 +15,8 @@ public class ConectorALlave : MonoBehaviour
     private ReiniciarPosicion reiniciarPosicion;
     private Rigidbody rb;
 
+    [SerializeField] private ColisionSistemaSuero colisionSistemaSuero;
+
 
 
     private void Start()
@@ -22,9 +24,10 @@ public class ConectorALlave : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         myGrab = GetComponent<Grabbable>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Llave3Pasos"))
+        if (other.CompareTag("Llave3Pasos") && colisionSistemaSuero.pinchoConectado)
         {
             rb.LockKinematic();
             grabbable = other.GetComponent<Grabbable>();
@@ -58,6 +61,8 @@ public class ConectorALlave : MonoBehaviour
 
 
             colliders.SetActive(false);
+
+            GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.ColocarCompresor);
         }
     }
 

@@ -11,13 +11,15 @@ public class RightZone : MonoBehaviour
     private float stayTimer = 0f;
     private bool timerActive = false;
 
+    [SerializeField] private NearbyArea nearbyArea;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Hands") && !handsInside.Contains(other.transform))
         {
             handsInside.Add(other.transform);
 
-            if(!timerActive)
+            if (!timerActive)
             {
                 timerActive = true;
                 stayTimer = 0f;
@@ -47,7 +49,12 @@ public class RightZone : MonoBehaviour
 
             if (stayTimer >= TimeUntilDone)
             {
-                Debug.Log("Timer Done");
+                if (nearbyArea != null && nearbyArea.hapticSource != null)
+                {   
+                    nearbyArea.hapticSource.Stop();
+                    nearbyArea.hapticPlaying = false;
+                }
+                GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.AplicarAntiseptico);
             }
         }
     }

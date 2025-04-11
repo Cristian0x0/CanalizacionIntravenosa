@@ -9,7 +9,7 @@ public class NearbyArea : MonoBehaviour
     public HapticSource hapticSource; // Asigna desde el Inspector
     public float maxDistance = 0.5f;
 
-    private bool hapticPlaying = false;
+    [HideInInspector] public bool hapticPlaying = false;
 
     private void OnTriggerEnter(Collider other)
     {

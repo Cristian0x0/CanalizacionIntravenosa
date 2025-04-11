@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Material LEDPantallas;
     public Texture[] Instrucciones;
 
+    public GameObject palparVena;
+
 
     private void Awake()
     {
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour
     {
         estadoJuego = nuevoEstado;
 
+        palparVena.SetActive(false);
+
         switch (nuevoEstado)
         {
             case GameState.BuscarObjetos:
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[2]);
                 break;
             case GameState.PalparVena:
+                palparVena.SetActive(true);
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[3]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[3]);
                 break;
