@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 168a26cf265b48548906c1ce27349be9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/Models/Eraser/Materials/Eraser.mat
+  uploadId: 326799

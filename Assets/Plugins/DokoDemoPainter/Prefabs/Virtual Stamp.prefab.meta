@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 117700f7d1af83145a8605b427fdbb34
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/Prefabs/Virtual Stamp.prefab
+  uploadId: 326799

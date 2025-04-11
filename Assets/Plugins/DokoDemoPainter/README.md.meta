@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 584f66790e8115444b2303ab94ccfbbe
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/README.md
+  uploadId: 326799

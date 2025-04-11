@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e86ad798290d1e441ba3f09eeb10bb2a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/Prefabs/Scripts/DDPStampController.cs
+  uploadId: 326799

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 045a85ead07129745a9705c53ab33de2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/Models/Stamp/Materials/Stamp body.mat
+  uploadId: 326799

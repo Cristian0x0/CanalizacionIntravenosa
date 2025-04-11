@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 497b7a2478ca40048b56acb36a1364fb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/Examples/Scripts/DDPPenMovement.cs
+  uploadId: 326799

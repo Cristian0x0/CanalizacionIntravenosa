@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0e887cf3e855fae449e05cce3ed87e1f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/Editor/DokoDemoPainterLayerAdd.cs
+  uploadId: 326799

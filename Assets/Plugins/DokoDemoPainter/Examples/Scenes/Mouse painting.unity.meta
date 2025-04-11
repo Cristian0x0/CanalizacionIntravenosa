@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e5ce40b8484d6bd47a63dc92edc073e4
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/Examples/Scenes/Mouse painting.unity
+  uploadId: 326799

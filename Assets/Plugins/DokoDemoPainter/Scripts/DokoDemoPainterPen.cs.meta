@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 64d52aef1af5c9d44b22037268c77fd2
+timeCreated: 1526399921
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/Scripts/DokoDemoPainterPen.cs
+  uploadId: 326799

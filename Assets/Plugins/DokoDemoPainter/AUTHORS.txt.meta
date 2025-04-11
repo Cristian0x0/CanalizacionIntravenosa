@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 035103cc141221c40828d9728abd4af3
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/AUTHORS.txt
+  uploadId: 326799

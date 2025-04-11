@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a6f2616e6bfa4e34197ec74e31e6e667
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 134335
+  packageName: DokoDemoPainter
+  packageVersion: 1.1.2
+  assetPath: Assets/Plugins/DokoDemoPainter/Examples/Scenes/Animated rabbit.unity
+  uploadId: 326799
