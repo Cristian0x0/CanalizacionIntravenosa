@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Oculus.Haptics;
 public class NearbyArea : MonoBehaviour
 {
+
+    //Este script viene controlado por el GameManager, solo se activa en en paso oportuno.
+
     private List<Transform> handsInside = new List<Transform>();
     public bool IsHandInside => handsInside.Count > 0;
 

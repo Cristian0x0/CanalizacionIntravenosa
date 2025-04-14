@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Texture[] Instrucciones;
 
     public GameObject palparVena;
+    public GameObject DesinfectarZona;
 
 
     private void Awake()
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         estadoJuego = nuevoEstado;
 
         palparVena.SetActive(false);
+        DesinfectarZona.SetActive(false);
 
         switch (nuevoEstado)
         {
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[3]);
                 break;
             case GameState.AplicarAntiseptico:
+                DesinfectarZona.SetActive(true);
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[4]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[4]);
                 break;

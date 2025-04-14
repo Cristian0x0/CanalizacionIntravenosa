@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class RightZone : MonoBehaviour
 {
+
+    //Este script viene controlado por el GameManager, solo se activa en en paso oportuno.
+
     public float TimeUntilDone = 5f;
 
     private List<Transform> handsInside = new List<Transform>();
