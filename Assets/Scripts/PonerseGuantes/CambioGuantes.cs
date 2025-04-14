@@ -10,8 +10,24 @@ public class CambioGuantes : MonoBehaviour
     [SerializeField] private Renderer SegundoObjeto;
     private Material materialDefault;
     private Renderer objectRenderer;
+    private bool ScriptActivo = false;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
+    }
+
+    private void ComprobarActivacion(GameState state)
+    {
+        if (state == GameState.PonerseGuantes || state == GameState.RetirarGuantes)
+        {
+            ScriptActivo = true;
+        }
+        else
+        {
+            ScriptActivo = false;
+        }
+    }
     void Start()
     {
         objectRenderer = GetComponent<Renderer>();
@@ -21,9 +37,8 @@ public class CambioGuantes : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         
-        if (other.CompareTag("Guantes"))
+        if (other.CompareTag("Guantes") && ScriptActivo)
         {
-            Debug.Log("Guanteeeeees");
             if (objectRenderer != null)
             {
                 bool esDefault = objectRenderer.sharedMaterial == materialDefault;
