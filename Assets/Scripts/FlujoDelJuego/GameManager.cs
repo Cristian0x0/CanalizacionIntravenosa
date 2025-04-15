@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject palparVena;
     public GameObject DesinfectarZona;
+    public GameObject SecondCameraPlane;
 
 
     private void Awake()
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CambiarEstadoJuego(GameState.BuscarObjetos);
+        SecondCameraPlane.SetActive(true);
     }
 
     private void OnValidate() //Esto sirve para poder cambiar el estado desde el inspector, comentar si no es necesario.
