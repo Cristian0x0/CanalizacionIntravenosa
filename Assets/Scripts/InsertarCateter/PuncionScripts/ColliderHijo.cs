@@ -7,11 +7,17 @@ public class ColliderHijo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        manager.RegisterTriggerEnter(triggerID, other.gameObject);
+        if (other.CompareTag("Pincho"))
+        {
+            manager.RegisterTriggerEnter(triggerID, other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        manager.RegisterTriggerExit(triggerID, other.gameObject);
+        if (other.CompareTag("Pincho"))
+        {
+            manager.RegisterTriggerExit(triggerID, other.gameObject);
+        }
     }
 }

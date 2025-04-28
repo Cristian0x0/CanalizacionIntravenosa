@@ -24,7 +24,7 @@ public class ColliderManager : MonoBehaviour
         {
             triggerMap[obj].Remove(triggerID);
 
-            if (triggerMap[obj].Count < 2)
+            if (triggerMap[obj].Count < 2 && triggerMap[obj].Count > 0)
             {
                 Debug.Log($"hola [EXIT] {obj.name} ya no está tocando ambos triggers.");
             }
