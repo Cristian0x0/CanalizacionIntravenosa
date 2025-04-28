@@ -10,9 +10,11 @@ public class NeedleVibration : MonoBehaviour
 
     [HideInInspector] public bool hapticPlaying = false;
 
+    [HideInInspector] public bool canVibrate = true;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Pincho") && !hapticPlaying && hapticSource != null)
+        if (other.CompareTag("Pincho") && !hapticPlaying && hapticSource != null && canVibrate)
         {
             hapticSource.Play();
             hapticPlaying = true;
@@ -21,7 +23,15 @@ public class NeedleVibration : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Pincho") && hapticSource != null)
+        if (other.CompareTag("Pincho") && hapticSource != null && canVibrate)
+        {
+            StopHapticFeedback();
+        }
+    }
+
+    public void StopHapticFeedback()
+    {
+        if (hapticSource != null)
         {
             hapticSource.Stop();
             hapticPlaying = false;

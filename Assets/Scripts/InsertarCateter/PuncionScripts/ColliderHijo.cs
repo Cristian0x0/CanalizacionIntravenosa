@@ -10,6 +10,7 @@ public class ColliderHijo : MonoBehaviour
         if (other.CompareTag("Pincho"))
         {
             manager.RegisterTriggerEnter(triggerID, other.gameObject);
+            manager.canulaReference = other.transform.parent.parent.gameObject;
         }
     }
 

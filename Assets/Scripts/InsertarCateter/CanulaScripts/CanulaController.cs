@@ -7,7 +7,6 @@ public class CanulaController : MonoBehaviour
     private Grabbable myGrab;
     private Transform parent;
 
-
     void Start()
     {
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Tapones"), LayerMask.NameToLayer("Manos"), true);

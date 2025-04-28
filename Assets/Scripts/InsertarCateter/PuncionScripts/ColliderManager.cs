@@ -5,6 +5,11 @@ public class ColliderManager : MonoBehaviour
 {
     private Dictionary<GameObject, HashSet<string>> triggerMap = new();
 
+    [HideInInspector] public GameObject canulaReference;
+
+    [SerializeField] private Transform NewCanulaPosition;
+
+    [SerializeField] private NeedleVibration vibrationController;
     public void RegisterTriggerEnter(string triggerID, GameObject obj)
     {
         if (!triggerMap.ContainsKey(obj))
@@ -14,7 +19,19 @@ public class ColliderManager : MonoBehaviour
 
         if (triggerMap[obj].Count == 2)
         {
-            Debug.Log($"hola [ENTER] {obj.name} está tocando ambos triggers.");
+            if(canulaReference != null)
+            {
+                canulaReference.transform.SetParent(NewCanulaPosition);
+                canulaReference.transform.localPosition = Vector3.zero;
+                canulaReference.transform.localRotation = Quaternion.identity;
+
+                vibrationController.canVibrate = true;
+                vibrationController.StopHapticFeedback();
+            }
+            else
+            {
+                Debug.Log("Está tocando ambos colliders pero no detecto la canula");
+            }
         }
     }
 
