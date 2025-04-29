@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject palparVena;
     public GameObject DesinfectarZona;
     public GameObject SecondCameraPlane;
+    public GameObject Puncion;
 
 
     private void Awake()
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
 
         palparVena.SetActive(false);
         DesinfectarZona.SetActive(false);
+        Puncion.SetActive(false);
 
         switch (nuevoEstado)
         {
@@ -74,6 +76,7 @@ public class GameManager : MonoBehaviour
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[6]);
                 break;
             case GameState.FijarPiel:
+                Puncion.SetActive(true);
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[7]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[7]);
                 break;
