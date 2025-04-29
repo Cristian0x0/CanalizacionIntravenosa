@@ -10,6 +10,8 @@ public class ColliderManager : MonoBehaviour
     [SerializeField] private Transform NewCanulaPosition;
 
     [SerializeField] private NeedleVibration vibrationController;
+
+    private bool fixedSkin = false;
     public void RegisterTriggerEnter(string triggerID, GameObject obj)
     {
         if (!triggerMap.ContainsKey(obj))
@@ -17,7 +19,7 @@ public class ColliderManager : MonoBehaviour
 
         triggerMap[obj].Add(triggerID);
 
-        if (triggerMap[obj].Count == 2)
+        if (triggerMap[obj].Count == 2 && fixedSkin)
         {
             if(canulaReference != null)
             {
@@ -25,8 +27,8 @@ public class ColliderManager : MonoBehaviour
                 canulaReference.transform.localPosition = Vector3.zero;
                 canulaReference.transform.localRotation = Quaternion.identity;
 
-                vibrationController.canVibrate = true;
                 vibrationController.StopHapticFeedback();
+                vibrationController.canVibrate = false;
             }
             else
             {
@@ -49,5 +51,16 @@ public class ColliderManager : MonoBehaviour
             if (triggerMap[obj].Count == 0)
                 triggerMap.Remove(obj);
         }
+    }
+
+    //Eventos para el InteractableUnityEventWrapper de los HandGrabInteractable que posee la operación de estirar la piel
+    public void SecondHandInSkin() 
+    {
+        fixedSkin = true;
+    }
+
+    public void NoSecondHandInSkin()
+    {
+        fixedSkin = false;
     }
 }
