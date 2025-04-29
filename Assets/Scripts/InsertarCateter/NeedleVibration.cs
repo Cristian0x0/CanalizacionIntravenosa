@@ -18,7 +18,7 @@ public class NeedleVibration : MonoBehaviour
     [SerializeField] private float startHeight = 0.001f; // Dimensión ocupada por la sangre dentro de la canula al estar completamente llena
     [SerializeField] private float endHeight = 0.021f; // Dimensión ocupada por la sangre dentro de la canula al estar completamente llena
 
-    private float elapsedTime = 0f;
+    public float elapsedTime = 0f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,12 +31,11 @@ public class NeedleVibration : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Pincho"))
+        if (other.CompareTag("Pincho") && canVibrate)
         {
-            GameObject blood = other.transform.GetChild(0).gameObject;
-
-            blood.SetActive(true);
-
+            //Accedo al bisabuelo del objeto para buscar entre sus hijos, es decir, entre los abuelos de la aguja
+            Transform greatGrandfather = other.transform.parent.parent.parent;
+            GameObject blood = greatGrandfather.Find("BloodController").gameObject;
 
             if (blood == null)
             {
@@ -44,9 +43,13 @@ public class NeedleVibration : MonoBehaviour
                 return;
             }
 
+            blood.SetActive(true);
+
             if (blood.transform.localScale.z >= endHeight) return;
 
             elapsedTime += Time.deltaTime;
+
+            Debug.Log($"Elapsed Time: {elapsedTime}");
 
             float t = Mathf.Clamp01(elapsedTime / fillVelocity);
             float currentLength = Mathf.Lerp(startHeight, endHeight, t);

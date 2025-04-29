@@ -3,6 +3,7 @@ using UnityEngine;
 public class ChildSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
+    [SerializeField] private NeedleVibration needleVibration;
     private Vector3 localPosition = Vector3.zero;
 
     private bool ActiveScript = false;
@@ -29,6 +30,7 @@ public class ChildSpawner : MonoBehaviour
         {
             GameObject newChild = Instantiate(prefab, transform);
             newChild.transform.localPosition = localPosition;
+            needleVibration.elapsedTime = 0f;
         }
         
         if (ActiveScript && !Done && transform.childCount >= 3)
