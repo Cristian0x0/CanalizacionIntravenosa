@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject DesinfectarZona;
     public GameObject SecondCameraPlane;
     public GameObject Puncion;
+    public GameObject QuitarTorniquete;
 
 
     private void Awake()
@@ -89,6 +90,7 @@ public class GameManager : MonoBehaviour
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[9]);
                 break;
             case GameState.RetirarCompresor:
+                QuitarTorniquete.SetActive(true);
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[10]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[10]);
                 break;
