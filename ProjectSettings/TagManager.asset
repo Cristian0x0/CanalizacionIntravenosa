@@ -28,6 +28,7 @@ TagManager:
   - Hands
   - Gauze
   - Pincho
+  - ConectorCateter
   layers:
   - Default
   - TransparentFX

@@ -24,16 +24,20 @@ public class ConectorLlaveCanula : MonoBehaviour
             // Asegurarse de que no tenga un joint previo
             if (fixedJoint != null) Destroy(fixedJoint);
 
-            // Crear joint fijo entre este objeto y el conector
-            fixedJoint = gameObject.AddComponent<FixedJoint>();
-            fixedJoint.connectedBody = other.attachedRigidbody;
+            myGrab.enabled = false;
+            StartCoroutine(EsperarUnSegundo());
 
             // Opcional: bloquear rotación si quieres que no gire más
             rb.angularVelocity = Vector3.zero;
             rb.linearVelocity = Vector3.zero;
 
-            myGrab.enabled = false;
-            StartCoroutine(EsperarUnSegundo());
+            //Ubicarlo en la posicion del cateter
+            transform.position = other.transform.position;
+            transform.rotation = other.transform.rotation;
+
+            // Crear joint fijo entre este objeto y el conector
+            fixedJoint = gameObject.AddComponent<FixedJoint>();
+            fixedJoint.connectedBody = other.attachedRigidbody;
 
             if (reiniciarPosicion != null)
                 reiniciarPosicion.enabled = false;
