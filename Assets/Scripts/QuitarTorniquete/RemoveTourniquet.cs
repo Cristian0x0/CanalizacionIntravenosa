@@ -26,7 +26,7 @@ public class RemoveTourniquet : MonoBehaviour
             myRigidbody.isKinematic = false;
             myRigidbody.LockKinematic();
 
-            GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.AbrirLlave);
+            GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.ConectarEquipoInfusion);
         }
     }
 }

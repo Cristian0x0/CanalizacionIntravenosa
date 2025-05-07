@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CambiarEstadoJuego(GameState.BuscarObjetos);
+        CambiarEstadoJuego(GameState.PrimeraHigieneDeManos);
         SecondCameraPlane.SetActive(true);
     }
 
@@ -45,82 +45,78 @@ public class GameManager : MonoBehaviour
 
         switch (nuevoEstado)
         {
-            case GameState.BuscarObjetos:
+            case GameState.PrimeraHigieneDeManos:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[0]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[0]);
                 break;
-            case GameState.PrepararSistema:
+            case GameState.BuscarObjetos:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[1]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[1]);
+                break;
+            case GameState.PrepararSistema:
+                LEDPantallas.SetTexture("_BaseMap", Instrucciones[2]);
+                LEDPantallas.SetTexture("_EmissionMap", Instrucciones[2]);
 
                 break;
             case GameState.ColocarCompresor:
-                LEDPantallas.SetTexture("_BaseMap", Instrucciones[2]);
-                LEDPantallas.SetTexture("_EmissionMap", Instrucciones[2]);
-                break;
-            case GameState.PalparVena:
-                palparVena.SetActive(true);
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[3]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[3]);
                 break;
-            case GameState.AplicarAntiseptico:
-                DesinfectarZona.SetActive(true);
+            case GameState.PalparVena:
+                palparVena.SetActive(true);
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[4]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[4]);
                 break;
-            case GameState.PonerseGuantes:
+            case GameState.AplicarAntiseptico:
+                DesinfectarZona.SetActive(true);
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[5]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[5]);
                 break;
-            case GameState.DesenfundarCateter:
+            case GameState.PonerseGuantes:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[6]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[6]);
                 break;
-            case GameState.FijarPiel:
-                Puncion.SetActive(true);
+            case GameState.DesenfundarCateter:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[7]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[7]);
                 break;
-            case GameState.InsertarCateter:
+            case GameState.FijarPielIntroducirAguja:
+                Puncion.SetActive(true);
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[8]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[8]);
                 break;
-            case GameState.ExtraerAguja:
+            case GameState.RetirarCompresor:
+                QuitarTorniquete.SetActive(true);
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[9]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[9]);
                 break;
-            case GameState.RetirarCompresor:
-                QuitarTorniquete.SetActive(true);
+            case GameState.ConectarEquipoInfusion:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[10]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[10]);
                 break;
-            case GameState.AbrirLlave:
+            case GameState.FijarCateter:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[11]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[11]);
                 break;
-            case GameState.LimpiarZona:
+            case GameState.FijarLlave3Pasos:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[12]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[12]);
                 break;
-            case GameState.ColocarAposito:
+            case GameState.DesecharAguja:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[13]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[13]);
                 break;
-            case GameState.FijarSistema:
+            case GameState.RecogerMaterial:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[14]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[14]);
                 break;
-            case GameState.DesecharAguja:
+            case GameState.RetirarGuantes:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[15]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[15]);
                 break;
-            case GameState.RecogerMaterial:
+            case GameState.SegundaHigieneDeManos:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[16]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[16]);
-                break;
-            case GameState.RetirarGuantes:
-                LEDPantallas.SetTexture("_BaseMap", Instrucciones[17]);
-                LEDPantallas.SetTexture("_EmissionMap", Instrucciones[17]);
                 break;
         }
 
@@ -135,6 +131,7 @@ public class GameManager : MonoBehaviour
 
 public enum GameState
 {
+    PrimeraHigieneDeManos,
     BuscarObjetos,
     PrepararSistema,
     ColocarCompresor,
@@ -142,15 +139,13 @@ public enum GameState
     AplicarAntiseptico,
     PonerseGuantes,
     DesenfundarCateter,
-    FijarPiel,
-    InsertarCateter,
-    ExtraerAguja,
+    FijarPielIntroducirAguja,
     RetirarCompresor,
-    AbrirLlave,
-    LimpiarZona,
-    ColocarAposito,
-    FijarSistema,
+    ConectarEquipoInfusion,
+    FijarCateter,
+    FijarLlave3Pasos,
     DesecharAguja,
     RecogerMaterial,
-    RetirarGuantes
+    RetirarGuantes,
+    SegundaHigieneDeManos
 }
