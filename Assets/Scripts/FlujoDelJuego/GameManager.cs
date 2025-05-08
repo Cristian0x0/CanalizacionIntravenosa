@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject SecondCameraPlane;
     public GameObject Puncion;
     public GameObject QuitarTorniquete;
+    public GameObject ConectarLlaveACateter;
 
 
     private void Awake()
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         palparVena.SetActive(false);
         DesinfectarZona.SetActive(false);
         Puncion.SetActive(false);
+        ConectarLlaveACateter.SetActive(false);
 
         switch (nuevoEstado)
         {
@@ -91,8 +93,10 @@ public class GameManager : MonoBehaviour
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[9]);
                 break;
             case GameState.ConectarEquipoInfusion:
+                ConectarLlaveACateter.SetActive(true);
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[10]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[10]);
+
                 break;
             case GameState.FijarCateter:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[11]);
