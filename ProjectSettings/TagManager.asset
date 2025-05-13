@@ -29,6 +29,8 @@ TagManager:
   - Gauze
   - Pincho
   - ConectorCateter
+  - TuboLlave
+  - TrozoEsparadrapo
   layers:
   - Default
   - TransparentFX

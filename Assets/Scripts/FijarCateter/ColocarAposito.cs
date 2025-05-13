@@ -34,7 +34,7 @@ public class ColocarAposito : MonoBehaviour
             {
                 hijo.gameObject.SetActive(true);
             }
-            Destroy(other.transform.parent.gameObject);
+            Destroy(other.transform.gameObject);
 
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.FijarLlave3Pasos);
         }

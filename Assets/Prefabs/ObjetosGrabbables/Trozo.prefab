@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 3156785784927796941}
   m_Layer: 7
   m_Name: Trozo
-  m_TagString: Untagged
+  m_TagString: TrozoEsparadrapo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
