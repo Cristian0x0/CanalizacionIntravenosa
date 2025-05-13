@@ -1,40 +1,24 @@
 using Oculus.Interaction;
-using System.Collections;
 using UnityEngine;
 
-public class fixExtension : MonoBehaviour
+public class secondExtension : MonoBehaviour
 {
     private bool tubeIn = false;
     private bool tapeIn = false;
-    public bool completedStep = false;
+    private bool completedStep = false;
     private FixedJoint fixedJoint;
     private Grabbable tapeGrab;
     private Rigidbody rb;
+    [SerializeField] private fixExtension firstTape;
 
     [SerializeField] private GameObject TrozoEsparadrapo;
-    [SerializeField] private Collider detectorCollider;
 
-    private void Awake()
-    {
-        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionEsparadrapo;
-    }
-    private void ComprobarActivacionEsparadrapo(GameState state)
-    {
-        if (state == GameState.FijarLlave3Pasos)
-        {
-            detectorCollider.enabled = true;
-        }
-        else
-        {
-            detectorCollider.enabled = false;
-        }
-    }
 
-    private void Update()
+    void Update()
     {
-        if (tubeIn && tapeIn && !completedStep)
+        if (tubeIn && tapeIn && !completedStep && firstTape.completedStep)
         {
-            
+
             // Asegurarse de que no tenga un joint previo
             if (fixedJoint != null) Destroy(fixedJoint);
 
@@ -59,17 +43,18 @@ public class fixExtension : MonoBehaviour
             TrozoEsparadrapo.SetActive(true);
             Destroy(tapeGrab.gameObject);
 
+            GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.DesecharAguja);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("TuboLlave"))
+        if (other.CompareTag("TuboLlave"))
         {
             tubeIn = true;
             rb = other.GetComponent<Rigidbody>();
         }
-        else if(other.CompareTag("TrozoEsparadrapo"))
+        else if (other.CompareTag("TrozoEsparadrapo"))
         {
             tapeIn = true;
             tapeGrab = other.GetComponent<Grabbable>();
@@ -88,11 +73,5 @@ public class fixExtension : MonoBehaviour
             tapeIn = false;
             tapeGrab = null;
         }
-    }
-
-    IEnumerator EsperarUnSegundo()
-    {
-        yield return new WaitForSeconds(1f);
-        tapeGrab.enabled = true;
     }
 }
