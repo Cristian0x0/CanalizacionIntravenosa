@@ -26,7 +26,7 @@ public class CanulaController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Suelo") && parent != null)
+        if ((collision.gameObject.CompareTag("Suelo") || collision.gameObject.CompareTag("Deposito")) && parent != null)
         {
             foreach (Transform child in parent)
             {
