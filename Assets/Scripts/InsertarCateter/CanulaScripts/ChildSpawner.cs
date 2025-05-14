@@ -7,6 +7,7 @@ public class ChildSpawner : MonoBehaviour
     private Vector3 localPosition = Vector3.zero;
 
     private bool ActiveScript = false;
+    private bool keepNeedle = true;
     private bool Done = false;
 
     private void Awake()
@@ -22,11 +23,16 @@ public class ChildSpawner : MonoBehaviour
     private void ComprobarActivacion(GameState state)
     {
         ActiveScript = state == GameState.DesenfundarCateter;
+
+        if(state == GameState.DesecharAguja)
+        {
+            keepNeedle = false;
+        }
     }
 
     void Update()
     {
-        if (transform.childCount == 0)
+        if (transform.childCount == 0 && keepNeedle)
         {
             GameObject newChild = Instantiate(prefab, transform);
             newChild.transform.localPosition = localPosition;
@@ -35,6 +41,7 @@ public class ChildSpawner : MonoBehaviour
         
         if (ActiveScript && !Done && transform.childCount >= 3)
         {
+            Done = true;
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.FijarPielIntroducirAguja);
         }
     }

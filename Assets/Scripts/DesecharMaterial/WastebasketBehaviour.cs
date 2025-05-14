@@ -5,6 +5,9 @@ public class WastebasketBehaviour : MonoBehaviour
 {
     private Grabbable myGrab;
     private bool removeItems = false;
+    private bool stepDone = false;
+
+    private bool gauzeRemoved = false, tourniquetRemoved = false;
 
     private void Awake()
     {
@@ -37,6 +40,12 @@ public class WastebasketBehaviour : MonoBehaviour
         {
             Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Papelera"), false);
         }
+
+        if(tourniquetRemoved && gauzeRemoved && !stepDone)
+        {
+            stepDone = true;
+            GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.RetirarGuantes);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -44,6 +53,8 @@ public class WastebasketBehaviour : MonoBehaviour
         {
             if (removeItems)
             {
+                if (collision.gameObject.CompareTag("Gauze")) gauzeRemoved = true;
+                else if (collision.gameObject.CompareTag("Torniquete")) tourniquetRemoved = true;
                 Destroy(collision.gameObject);
             }
             else

@@ -11,10 +11,7 @@ public class Torniquete : MonoBehaviour
     }
     private void ComprobarActivacionTorniquete(GameState state)
     {
-        if (state == GameState.ColocarCompresor)
-        {
-            ScriptActivo = true;
-        }
+        ScriptActivo = state == GameState.ColocarCompresor;
     }
     private void Start()
     {

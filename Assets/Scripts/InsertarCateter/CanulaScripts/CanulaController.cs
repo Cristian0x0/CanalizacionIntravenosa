@@ -6,6 +6,22 @@ public class CanulaController : MonoBehaviour
 {
     private Grabbable myGrab;
     private Transform parent;
+    private bool rightStep = false;
+
+    private void Awake()
+    {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.EnEstadoJuegoCambiado -= ComprobarActivacion;
+    }
+
+    private void ComprobarActivacion(GameState state)
+    {
+        rightStep = state == GameState.DesecharAguja;
+    }
 
     void Start()
     {
@@ -28,6 +44,10 @@ public class CanulaController : MonoBehaviour
     {
         if ((collision.gameObject.CompareTag("Suelo") || collision.gameObject.CompareTag("Deposito") || collision.gameObject.CompareTag("Papelera")) && parent != null)
         {
+            if (collision.gameObject.CompareTag("Deposito") && rightStep)
+            {
+                GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.RecogerMaterial);
+            }
             foreach (Transform child in parent)
             {
                 if(child != transform)
