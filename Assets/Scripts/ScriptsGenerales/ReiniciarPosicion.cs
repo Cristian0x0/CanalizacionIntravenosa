@@ -35,25 +35,31 @@ public class ReiniciarPosicion : MonoBehaviour
     {
         if (collision.gameObject.tag == "Suelo")
         {
-            transform.position = posicionInicial;
-            transform.rotation = rotacionInicial;
+            resetPosition();
+        }
+    }
 
-            if (rb != null)
+    public void resetPosition()
+    {
+        transform.position = posicionInicial;
+        transform.rotation = rotacionInicial;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        if (segundoObjetoOpcional != null)
+        {
+
+            segundoObjetoOpcional.position = segundaPosicionInicial;
+            segundoObjetoOpcional.rotation = segundaRotacionInicial;
+
+            if (rbOpcional != null)
             {
-                rb.linearVelocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
-            }
-
-            if (segundoObjetoOpcional!= null) {
-
-                segundoObjetoOpcional.position = segundaPosicionInicial;
-                segundoObjetoOpcional.rotation = segundaRotacionInicial;
-
-                if (rbOpcional != null)
-                {
-                    rbOpcional.linearVelocity = Vector3.zero;
-                    rbOpcional.angularVelocity = Vector3.zero;
-                }
+                rbOpcional.linearVelocity = Vector3.zero;
+                rbOpcional.angularVelocity = Vector3.zero;
             }
         }
     }

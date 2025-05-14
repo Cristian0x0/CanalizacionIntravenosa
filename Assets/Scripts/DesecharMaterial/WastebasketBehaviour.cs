@@ -4,6 +4,23 @@ using UnityEngine;
 public class WastebasketBehaviour : MonoBehaviour
 {
     private Grabbable myGrab;
+    private bool removeItems = false;
+
+    private void Awake()
+    {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionAposito;
+    }
+    private void ComprobarActivacionAposito(GameState state)
+    {
+        if (state == GameState.RecogerMaterial)
+        {
+            removeItems = true;
+        }
+        else
+        {
+            removeItems = false;
+        }
+    }
     void Start()
     {
         myGrab = GetComponent<Grabbable>();
@@ -19,6 +36,24 @@ public class WastebasketBehaviour : MonoBehaviour
         else
         {
             Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Papelera"), false);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Gauze") || collision.gameObject.CompareTag("Torniquete"))
+        {
+            if (removeItems)
+            {
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                ReiniciarPosicion reiniciarPosicion = collision.gameObject.GetComponent<ReiniciarPosicion>();
+                if(reiniciarPosicion != null)
+                {
+                    reiniciarPosicion.resetPosition();
+                }
+            }
         }
     }
 }
