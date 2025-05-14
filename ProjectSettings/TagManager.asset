@@ -32,6 +32,7 @@ TagManager:
   - TuboLlave
   - TrozoEsparadrapo
   - Deposito
+  - Papelera
   layers:
   - Default
   - TransparentFX
@@ -49,7 +50,7 @@ TagManager:
   - Canula
   - DokoDemoPainter
   - SegundaCamara
-  - 
+  - Papelera
   - 
   - 
   - 
