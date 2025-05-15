@@ -48,7 +48,7 @@ public class WaterCollision : MonoBehaviour
         }
         else if (other.CompareTag("Hands") && lastStep)
         {
-            //Aqui termina la aplicación
+            Debug.Log("TODO EL PROCESO TERMINADO");
         }
     }
 }

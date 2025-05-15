@@ -42,7 +42,7 @@ public class ControladorGuantes : MonoBehaviour
         }
         else if (Paso18 && manoIzquierda.sharedMaterial == mano && manoDerecha.sharedMaterial == mano)
         {
-            Debug.Log("Aqui termina la práctica");
+            GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.SegundaHigieneDeManos);
         }
     }
 }
