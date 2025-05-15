@@ -33,6 +33,7 @@ TagManager:
   - TrozoEsparadrapo
   - Deposito
   - Papelera
+  - Paredes
   layers:
   - Default
   - TransparentFX
