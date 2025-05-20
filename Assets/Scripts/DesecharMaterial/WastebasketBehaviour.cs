@@ -49,21 +49,18 @@ public class WastebasketBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Gauze") || collision.gameObject.CompareTag("Torniquete"))
+        if ((collision.gameObject.CompareTag("Gauze") || collision.gameObject.CompareTag("Torniquete")) && removeItems)
         {
-            if (removeItems)
+            if (collision.gameObject.CompareTag("Gauze")) gauzeRemoved = true;
+            else if (collision.gameObject.CompareTag("Torniquete")) tourniquetRemoved = true;
+            Destroy(collision.gameObject);
+        }
+        else
+        {
+            ReiniciarPosicion reiniciarPosicion = collision.gameObject.GetComponent<ReiniciarPosicion>();
+            if (reiniciarPosicion != null)
             {
-                if (collision.gameObject.CompareTag("Gauze")) gauzeRemoved = true;
-                else if (collision.gameObject.CompareTag("Torniquete")) tourniquetRemoved = true;
-                Destroy(collision.gameObject);
-            }
-            else
-            {
-                ReiniciarPosicion reiniciarPosicion = collision.gameObject.GetComponent<ReiniciarPosicion>();
-                if(reiniciarPosicion != null)
-                {
-                    reiniciarPosicion.resetPosition();
-                }
+                reiniciarPosicion.resetPosition();
             }
         }
     }
