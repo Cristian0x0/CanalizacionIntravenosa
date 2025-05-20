@@ -7,6 +7,19 @@ public class GauzeBehaviour : MonoBehaviour
     //Este script viene controlado por el GameManager, solo se activa en en paso oportuno.
 
     private DokoDemoPainterPen CanDraw;
+    private bool isActive = false;
+
+    private void Awake()
+    {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionAposito;
+    }
+    private void ComprobarActivacionAposito(GameState state)
+    {
+        if (state == GameState.AplicarAntiseptico)
+        {
+            isActive = true;
+        }
+    }
 
     private void Start()
     {
@@ -15,7 +28,7 @@ public class GauzeBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Alcohol") && CanDraw != null)
+        if (other.gameObject.CompareTag("Alcohol") && CanDraw != null && isActive)
         {
             CanDraw.penDown = true;
         }

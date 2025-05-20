@@ -28,7 +28,7 @@ public class ColisionSueroSoporte : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Suero") && ScriptActivo)
+        if (other.CompareTag("Suero") && ScriptActivo && !boteColocado)
         {
             boteEnZona = other.gameObject; // Guardamos referencia al bote
             rb = boteEnZona.GetComponent<Rigidbody>();
@@ -54,12 +54,12 @@ public class ColisionSueroSoporte : MonoBehaviour
 
     public void SoltarBote()
     {
-        if (boteEnZona != null && ScriptActivo)
+        if (boteEnZona != null && ScriptActivo && !boteColocado)
         {
             boteEnZona.GetComponent<SueroGrabbable>().enabled = false;
 
             Transform puntoMasCercano = ObtenerPuntoMasCercano(boteEnZona.transform.position);
-            
+
             boteEnZona.transform.parent = puntoMasCercano;
             boteEnZona.transform.localPosition = Vector3.zero;
 
@@ -68,6 +68,8 @@ public class ColisionSueroSoporte : MonoBehaviour
             boteEnZona.GetComponent<SueroGrabbable>().enabled = true;
 
             boteColocado = true;
+
+            boteEnZona.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
