@@ -10,6 +10,17 @@ public class ColisionSistemaSuero : MonoBehaviour
     public ColisionSueroSoporte sePuedeConectar;
     [HideInInspector] public bool pinchoConectado = false;
 
+    private void Update()
+    {
+        if (sistema != null)
+        {
+            if (!sistema.GetComponent<SistemaGrabbable>().Agarrado)
+            {
+                SoltarPincho();
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SistemaSuero") && sePuedeConectar.boteColocado)

@@ -96,8 +96,6 @@ namespace Oculus.Interaction
             }
         }
 
-        public ColisionSistemaSuero soporte;
-
         public bool Agarrado = false; //Est� variable nos dir� si el objeto est� siendo agarrado
 
         /// <summary>
@@ -220,7 +218,6 @@ namespace Oculus.Interaction
                     EndTransform();
                     break;
                 case PointerEventType.Unselect:
-                    soporte.SoltarPincho();
                     Agarrado = false;
                     ForceMove(evt);
                     EndTransform();
