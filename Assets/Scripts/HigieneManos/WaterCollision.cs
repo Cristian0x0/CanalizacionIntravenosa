@@ -9,6 +9,8 @@ public class WaterCollision : MonoBehaviour
     [SerializeField] private Collider waterCollider;
     [SerializeField] private SoapCollision soap;
     [SerializeField] private ParticleSystem waterSystem;
+    [SerializeField] private AudioSource waterSound;
+
     private void Awake()
     {
         GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
@@ -21,18 +23,21 @@ public class WaterCollision : MonoBehaviour
             firstStep = true;
             waterCollider.enabled = true;
             waterSystem.Play();
+            waterSound.Play();
         }
         else if (state == GameState.SegundaHigieneDeManos)
         {
             lastStep = true;
             waterCollider.enabled = true;
             waterSystem.Play();
+            waterSound.Play();
         }
         else
         {
             firstStep = false;
             lastStep = false;
             waterCollider.enabled = false;
+            waterSound.Stop();
             waterSystem.Stop(withChildren: true, stopBehavior: ParticleSystemStopBehavior.StopEmitting);
         }
     }
