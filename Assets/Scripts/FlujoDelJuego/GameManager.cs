@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CambiarEstadoJuego(GameState.PrimeraHigieneDeManos);
+        CambiarEstadoJuego(GameState.MainMenuStep);
         SecondCameraPlane.SetActive(true);
     }
 
@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
 
         switch (nuevoEstado)
         {
+            case GameState.MainMenuStep:
+                LEDPantallas.SetTexture("_BaseMap", Instrucciones[17]);
+                LEDPantallas.SetTexture("_EmissionMap", Instrucciones[17]);
+                break;
             case GameState.PrimeraHigieneDeManos:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[0]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[0]);
@@ -135,6 +139,7 @@ public class GameManager : MonoBehaviour
 
 public enum GameState
 {
+    MainMenuStep,
     PrimeraHigieneDeManos,
     BuscarObjetos,
     PrepararSistema,
