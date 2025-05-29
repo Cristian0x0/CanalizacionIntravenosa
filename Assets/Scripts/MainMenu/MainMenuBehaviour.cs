@@ -41,20 +41,21 @@ public class MainMenuBehaviour : MonoBehaviour
 
     public void normalButton()
     {
+        GameManager.controladorAplicacion.modoJuego = gameMode.Normal;
         GameModeButtons.SetActive(false);
         MainButtons.SetActive(true);
     }
 
     public void advancedButton()
     {
-        GameManager.controladorAplicacion.BlackScreen = true;
+        GameManager.controladorAplicacion.modoJuego = gameMode.Advanced;
         GameModeButtons.SetActive(false);
         MainButtons.SetActive(true);
     }
 
     public void expertButton()
     {
-        GameManager.controladorAplicacion.BlackScreen = true;
+        GameManager.controladorAplicacion.modoJuego = gameMode.Expert;
         GameModeButtons.SetActive(false);
         MainButtons.SetActive(true);
     }
