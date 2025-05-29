@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,7 @@ public class MainMenuBehaviour : MonoBehaviour
     [SerializeField] private GameObject GameModeButtons;
     [SerializeField] private GameObject MainButtons;
     [SerializeField] private GameObject Settings;
+    [SerializeField] TextMeshProUGUI infoModeText;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -46,28 +48,32 @@ public class MainMenuBehaviour : MonoBehaviour
     public void normalButton()
     {
         GameManager.controladorAplicacion.modoJuego = gameMode.Normal;
-        GameModeButtons.SetActive(false);
-        MainButtons.SetActive(true);
+        infoModeText.text = "Normal Mode: Visual aids, unlimited time, no penalties";
+        //GameModeButtons.SetActive(false);
+        //MainButtons.SetActive(true);
     }
 
     public void advancedButton()
     {
         GameManager.controladorAplicacion.modoJuego = gameMode.Advanced;
-        GameModeButtons.SetActive(false);
-        MainButtons.SetActive(true);
+        infoModeText.text = "Advanced Mode: No visual aids, unlimited time, no penalties";
+        //GameModeButtons.SetActive(false);
+        //MainButtons.SetActive(true);
     }
 
     public void expertButton()
     {
         GameManager.controladorAplicacion.modoJuego = gameMode.Expert;
-        GameModeButtons.SetActive(false);
-        MainButtons.SetActive(true);
+        infoModeText.text = "Expert Mode: No visual aids, against the clock every step, no object can fall to the ground or you will lose";
+        //GameModeButtons.SetActive(false);
+        //MainButtons.SetActive(true);
     }
 
-    public void settingsBackButton()
+    public void BackButton()
     {
         MainButtons.SetActive(true);
         Settings.SetActive(false);
+        GameModeButtons.SetActive(false);
     }
 
     public void endButton()
