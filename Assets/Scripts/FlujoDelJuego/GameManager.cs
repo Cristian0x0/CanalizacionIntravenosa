@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Android;
@@ -21,10 +23,36 @@ public class GameManager : MonoBehaviour
     public GameObject QuitarTorniquete;
     public GameObject ConectarLlaveACateter;
 
+    [SerializeField] TextMeshProUGUI timerText;
+    float elapsedTime;
+    float remainingTime;
+
+    private Dictionary<GameState, float> tiempoLimitiePaso = new Dictionary<GameState, float>()
+    {
+        { GameState.PrimeraHigieneDeManos, 30f },
+        { GameState.BuscarObjetos, 90f },
+        { GameState.PrepararSistema, 60f },
+        { GameState.ColocarCompresor, 30f },
+        { GameState.PalparVena, 30f },
+        { GameState.AplicarAntiseptico, 20f },
+        { GameState.PonerseGuantes, 20f },
+        { GameState.DesenfundarCateter, 30f },
+        { GameState.FijarPielIntroducirAguja, 40f },
+        { GameState.RetirarCompresor, 20f },
+        { GameState.ConectarEquipoInfusion, 50f },
+        { GameState.FijarCateter, 30f },
+        { GameState.FijarLlave3Pasos, 40f },
+        { GameState.DesecharAguja, 40f },
+        { GameState.RecogerMaterial, 50f },
+        { GameState.RetirarGuantes, 20f },
+        { GameState.SegundaHigieneDeManos, 30f }
+    };
 
     private void Awake()
     {
         controladorAplicacion = this;
+        elapsedTime = 0f;
+        remainingTime = 1f;
     }
 
     private void Start()
@@ -32,6 +60,32 @@ public class GameManager : MonoBehaviour
         CambiarEstadoJuego(GameState.MainMenuStep);
         modoJuego = gameMode.Normal;
         SecondCameraPlane.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (estadoJuego == GameState.MainMenuStep) return;
+
+        elapsedTime += Time.deltaTime;
+
+        if (modoJuego == gameMode.Expert)
+        {
+            remainingTime -= Time.deltaTime;
+            int minutes = Mathf.FloorToInt(remainingTime / 60f);
+            int seconds = Mathf.FloorToInt(remainingTime % 60f);
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+            if(remainingTime<= 0)
+            {
+                //El usuario ha perdido
+            }
+        }
+        else
+        {
+            int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+            int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        } 
     }
 
     private void OnValidate() //Esto sirve para poder cambiar el estado desde el inspector, comentar si no es necesario.
@@ -48,7 +102,12 @@ public class GameManager : MonoBehaviour
         Puncion.SetActive(false);
         ConectarLlaveACateter.SetActive(false);
 
-        switch (nuevoEstado)
+        if (modoJuego == gameMode.Expert)
+        {
+            remainingTime = tiempoLimitiePaso.ContainsKey(nuevoEstado) ? tiempoLimitiePaso[nuevoEstado] : 60f; // Si no hay tiempo definido, se pone 60 segundos
+        }
+
+            switch (nuevoEstado)
         {
             case GameState.MainMenuStep:
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[17]);

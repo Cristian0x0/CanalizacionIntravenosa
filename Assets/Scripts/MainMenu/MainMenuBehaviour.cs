@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuBehaviour : MonoBehaviour
 {
@@ -64,5 +65,10 @@ public class MainMenuBehaviour : MonoBehaviour
     {
         MainButtons.SetActive(true);
         Settings.SetActive(false);
+    }
+
+    public void endButton()
+    {
+        SceneManager.LoadSceneAsync("MainScene");
     }
 }
