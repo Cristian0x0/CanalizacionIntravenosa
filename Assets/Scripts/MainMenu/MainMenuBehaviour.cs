@@ -15,6 +15,7 @@ public class MainMenuBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        MainMenu.SetActive(true);
         GameModeButtons.SetActive(false);
         MainButtons.SetActive(true);
         Settings.SetActive(false);
