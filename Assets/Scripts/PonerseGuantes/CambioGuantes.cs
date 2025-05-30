@@ -1,16 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CambioGuantes : MonoBehaviour
 {
 
     public Material nuevoMaterial;
+    [SerializeField] private Renderer PrimerObjeto;
     [SerializeField] private Renderer SegundoObjeto;
     private Material materialDefault;
     private Renderer objectRenderer;
     private bool ScriptActivo = false;
+    private bool stepDone = false;
 
     private void Awake()
     {
@@ -21,6 +24,7 @@ public class CambioGuantes : MonoBehaviour
     {
         if (state == GameState.PonerseGuantes || state == GameState.RetirarGuantes)
         {
+            stepDone = false;
             ScriptActivo = true;
         }
         else
@@ -30,14 +34,14 @@ public class CambioGuantes : MonoBehaviour
     }
     void Start()
     {
-        objectRenderer = GetComponent<Renderer>();
+        objectRenderer = PrimerObjeto.GetComponent<Renderer>();
         materialDefault = objectRenderer.sharedMaterial;
     }
 
     public void OnTriggerEnter(Collider other)
     {
         
-        if (other.CompareTag("Guantes") && ScriptActivo)
+        if (other.CompareTag("Guantes") && ScriptActivo && !stepDone)
         {
             if (objectRenderer != null)
             {
@@ -49,6 +53,7 @@ public class CambioGuantes : MonoBehaviour
                 {
                     SegundoObjeto.sharedMaterial = esDefault ? nuevoMaterial : materialDefault;
                 }
+                stepDone = true;
             }
         }
     }
