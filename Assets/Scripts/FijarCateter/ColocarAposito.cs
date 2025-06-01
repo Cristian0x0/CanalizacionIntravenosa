@@ -5,11 +5,6 @@ public class ColocarAposito : MonoBehaviour
     private Transform hijo;
 
     [SerializeField] private Collider detectorCollider;
-
-    private void Awake()
-    {
-        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionAposito;
-    }
     private void ComprobarActivacionAposito(GameState state)
     {
         if (state == GameState.FijarCateter)
@@ -23,7 +18,13 @@ public class ColocarAposito : MonoBehaviour
     }
     private void Start()
     {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionAposito;
         hijo = transform.Find("ApositoEnPiel");
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.EnEstadoJuegoCambiado -= ComprobarActivacionAposito;
     }
 
     private void OnTriggerEnter(Collider other)

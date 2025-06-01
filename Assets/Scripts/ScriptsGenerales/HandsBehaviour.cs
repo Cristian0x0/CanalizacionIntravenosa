@@ -16,7 +16,7 @@ public class HandsBehaviour : MonoBehaviour
     [SerializeField] private Collider rightHandControllerGripCollider;
     [SerializeField] private Collider rightHandControllerPinchCollider;
 
-    private void Awake()
+    private void Start()
     {
         GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
 

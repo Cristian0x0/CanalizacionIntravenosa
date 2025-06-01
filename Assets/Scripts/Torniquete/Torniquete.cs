@@ -5,17 +5,19 @@ public class Torniquete : MonoBehaviour
     private Transform hijo;
     private bool ScriptActivo = false;
 
-    private void Awake()
-    {
-        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionTorniquete;
-    }
     private void ComprobarActivacionTorniquete(GameState state)
     {
         ScriptActivo = state == GameState.ColocarCompresor;
     }
     private void Start()
     {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionTorniquete;
         hijo = transform.Find("Visual");
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.EnEstadoJuegoCambiado -= ComprobarActivacionTorniquete;
     }
 
     private void OnTriggerEnter(Collider other)

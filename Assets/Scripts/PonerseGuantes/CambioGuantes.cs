@@ -15,11 +15,6 @@ public class CambioGuantes : MonoBehaviour
     private bool ScriptActivo = false;
     private bool stepDone = false;
 
-    private void Awake()
-    {
-        GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
-    }
-
     private void ComprobarActivacion(GameState state)
     {
         if (state == GameState.PonerseGuantes || state == GameState.RetirarGuantes)
@@ -34,8 +29,14 @@ public class CambioGuantes : MonoBehaviour
     }
     void Start()
     {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
         objectRenderer = PrimerObjeto.GetComponent<Renderer>();
         materialDefault = objectRenderer.sharedMaterial;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.EnEstadoJuegoCambiado -= ComprobarActivacion;
     }
 
     public void OnTriggerEnter(Collider other)

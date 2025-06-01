@@ -11,9 +11,14 @@ public class WaterCollision : MonoBehaviour
     [SerializeField] private ParticleSystem waterSystem;
     [SerializeField] private AudioSource waterSound;
 
-    private void Awake()
+    private void Start()
     {
         GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.EnEstadoJuegoCambiado -= ComprobarActivacion;
     }
 
     private void ComprobarActivacion(GameState state)

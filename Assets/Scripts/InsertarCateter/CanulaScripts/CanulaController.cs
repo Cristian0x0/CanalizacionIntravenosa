@@ -8,11 +8,6 @@ public class CanulaController : MonoBehaviour
     private Transform parent;
     private bool rightStep = false;
 
-    private void Awake()
-    {
-        GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
-    }
-
     private void OnDestroy()
     {
         GameManager.EnEstadoJuegoCambiado -= ComprobarActivacion;
@@ -25,6 +20,7 @@ public class CanulaController : MonoBehaviour
 
     void Start()
     {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Tapones"), LayerMask.NameToLayer("Manos"), true);
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Canula"), LayerMask.NameToLayer("Manos"), true);
         myGrab = GetComponent<Grabbable>();

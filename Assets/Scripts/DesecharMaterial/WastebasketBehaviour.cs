@@ -8,11 +8,6 @@ public class WastebasketBehaviour : MonoBehaviour
     private bool stepDone = false;
 
     private bool gauzeRemoved = false, tourniquetRemoved = false;
-
-    private void Awake()
-    {
-        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionAposito;
-    }
     private void ComprobarActivacionAposito(GameState state)
     {
         if (state == GameState.RecogerMaterial)
@@ -26,6 +21,7 @@ public class WastebasketBehaviour : MonoBehaviour
     }
     void Start()
     {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionAposito;
         myGrab = GetComponent<Grabbable>();
     }
 

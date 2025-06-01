@@ -13,9 +13,14 @@ public class ColisionSueroSoporte : MonoBehaviour
     [HideInInspector]
     public bool boteColocado = false;
 
-    private void Awake()
+    private void Start()
     {
         GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.EnEstadoJuegoCambiado -= ComprobarActivacion;
     }
 
     private void ComprobarActivacion(GameState state)

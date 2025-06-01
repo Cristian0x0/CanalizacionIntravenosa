@@ -9,9 +9,9 @@ public class GauzeBehaviour : MonoBehaviour
     private DokoDemoPainterPen CanDraw;
     private bool isActive = false;
 
-    private void Awake()
+    private void OnDestroy()
     {
-        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionAposito;
+        GameManager.EnEstadoJuegoCambiado -= ComprobarActivacionAposito;
     }
     private void ComprobarActivacionAposito(GameState state)
     {
@@ -23,6 +23,7 @@ public class GauzeBehaviour : MonoBehaviour
 
     private void Start()
     {
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionAposito;
         CanDraw = GetComponent<DokoDemoPainterPen>();
     }
 

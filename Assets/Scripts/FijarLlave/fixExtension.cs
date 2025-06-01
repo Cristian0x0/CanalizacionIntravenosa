@@ -14,10 +14,16 @@ public class fixExtension : MonoBehaviour
     [SerializeField] private GameObject TrozoEsparadrapo;
     [SerializeField] private Collider detectorCollider;
 
-    private void Awake()
+    private void Start()
     {
         GameManager.EnEstadoJuegoCambiado += ComprobarActivacionEsparadrapo;
     }
+
+    private void OnDestroy()
+    {
+        GameManager.EnEstadoJuegoCambiado -= ComprobarActivacionEsparadrapo;
+    }
+
     private void ComprobarActivacionEsparadrapo(GameState state)
     {
         if (state == GameState.FijarLlave3Pasos)
