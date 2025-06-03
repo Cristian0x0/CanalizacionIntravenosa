@@ -8,7 +8,7 @@ public class WastebasketBehaviour : MonoBehaviour
     private bool stepDone = false;
 
     private bool gauzeRemoved = false, tourniquetRemoved = false;
-    private void ComprobarActivacionAposito(GameState state)
+    private void ComprobarActivacionPapelera(GameState state)
     {
         if (state == GameState.RecogerMaterial)
         {
@@ -21,8 +21,13 @@ public class WastebasketBehaviour : MonoBehaviour
     }
     void Start()
     {
-        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionAposito;
+        GameManager.EnEstadoJuegoCambiado += ComprobarActivacionPapelera;
         myGrab = GetComponent<Grabbable>();
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.EnEstadoJuegoCambiado -= ComprobarActivacionPapelera;
     }
 
     // Update is called once per frame
