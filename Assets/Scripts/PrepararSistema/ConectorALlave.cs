@@ -31,7 +31,7 @@ public class ConectorALlave : MonoBehaviour
     {
         if (other.CompareTag("Llave3Pasos") && colisionSistemaSuero.pinchoConectado && !stepDone)
         {
-            rb.LockKinematic();
+            //rb.LockKinematic();
             grabbable = other.GetComponent<Grabbable>();
             if (grabbable != null)
             {
@@ -39,11 +39,43 @@ public class ConectorALlave : MonoBehaviour
                 grabbable.enabled = false; // Desactivar el Grabbable
                 StartCoroutine(EsperarUnSegundo());
             }
-            
+
+            /*
             other.transform.SetParent(Padre.transform);
             other.transform.position = NuevaPosicion.position;
             other.transform.rotation = NuevaPosicion.rotation;
             transform.SetParent(other.transform);
+            */
+
+            //other.transform.SetParent(Padre.transform);
+            other.transform.position = NuevaPosicion.position;
+            other.transform.rotation = NuevaPosicion.rotation;
+
+            ConfigurableJoint joint = grabbable.gameObject.AddComponent<ConfigurableJoint>();
+            joint.connectedBody = rb;
+
+            //other.GetComponent<Rigidbody>().isKinematic = true;
+
+            // Configuraciones básicas
+            joint.xMotion = ConfigurableJointMotion.Locked;
+            joint.yMotion = ConfigurableJointMotion.Locked;
+            joint.zMotion = ConfigurableJointMotion.Locked;
+
+            joint.angularXMotion = ConfigurableJointMotion.Free;
+            joint.angularYMotion = ConfigurableJointMotion.Free;
+            joint.angularZMotion = ConfigurableJointMotion.Free;
+
+            // Usar rotación esférica (Slerp)
+            joint.rotationDriveMode = RotationDriveMode.Slerp;
+
+            JointDrive slerpDrive = new JointDrive
+            {
+                positionSpring = 10000f,     // Cuánta fuerza para alinear rotación
+                positionDamper = 100f,       // Amortiguación para evitar temblores
+                maximumForce = Mathf.Infinity
+            };
+
+            joint.slerpDrive = slerpDrive;
 
             // Desactivar el script ReiniciarPosicion y activar el limite del cable
             reiniciarPosicion = other.GetComponent<ReiniciarPosicion>();

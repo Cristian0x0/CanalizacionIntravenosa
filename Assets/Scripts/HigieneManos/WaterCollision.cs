@@ -58,7 +58,7 @@ public class WaterCollision : MonoBehaviour
         }
         else if (other.CompareTag("Hands") && lastStep)
         {
-            Debug.Log("TODO EL PROCESO TERMINADO");
+            GameManager.controladorAplicacion.CompleteSimulation();
         }
     }
 }
