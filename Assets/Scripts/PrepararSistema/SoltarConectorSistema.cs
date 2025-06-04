@@ -6,12 +6,7 @@ public class SoltarConectorSistema : MonoBehaviour
 {
     public Transform connectedObject; // Objeto de referencia
     public float maxDistance = 1.5f; // Distancia máxima antes de soltar
-    private Grabbable grabbable; // Referencia al Grabbable
-
-    void Start()
-    {
-        grabbable = GetComponent<Grabbable>();
-    }
+    [SerializeField] private Grabbable grabbable; // Referencia al Grabbable
 
     void Update()
     {

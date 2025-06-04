@@ -6,13 +6,11 @@ using UnityEngine.Rendering.VirtualTexturing;
 public class ConectorALlave : MonoBehaviour
 {
     [SerializeField] private Transform NuevaPosicion;
-    [SerializeField] private GameObject Padre;
     [SerializeField] private GameObject colliders; //Estos hay que quitarlos para que el conector del sistema de suero no pueda ser cogido
-    [SerializeField] private SoltarConectorSistema soltarConectorSistema;
-    private SoltarConectorSistema soltarConectorSistema2;
+    [SerializeField] private SoltarConectorSistema SoltarConectorSistemaCompleto;
+    [SerializeField] private SoltarConectorSistema SoltarConectorSistemaCompleto2;
     private Grabbable grabbable;
     private Grabbable myGrab;
-    private ReiniciarPosicion reiniciarPosicion;
     private Rigidbody rb;
 
     private bool stepDone = false;
@@ -25,6 +23,9 @@ public class ConectorALlave : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         myGrab = GetComponent<Grabbable>();
+
+        SoltarConectorSistemaCompleto.enabled = false;
+        SoltarConectorSistemaCompleto2.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,7 +37,7 @@ public class ConectorALlave : MonoBehaviour
             if (grabbable != null)
             {
                 myGrab.enabled = false;
-                grabbable.enabled = false; // Desactivar el Grabbable
+                //grabbable.enabled = false; // Desactivar el Grabbable
                 StartCoroutine(EsperarUnSegundo());
             }
 
@@ -77,21 +78,8 @@ public class ConectorALlave : MonoBehaviour
 
             joint.slerpDrive = slerpDrive;
 
-            // Desactivar el script ReiniciarPosicion y activar el limite del cable
-            reiniciarPosicion = other.GetComponent<ReiniciarPosicion>();
-            if (reiniciarPosicion != null)
-            {
-                reiniciarPosicion.enabled = false;
-            }
-            if (soltarConectorSistema != null)
-            {
-                soltarConectorSistema.enabled = true;
-            }
-            soltarConectorSistema2 = other.GetComponent<SoltarConectorSistema>();
-            if (soltarConectorSistema2 != null)
-            {
-                soltarConectorSistema2.enabled = true;
-            }
+            SoltarConectorSistemaCompleto.enabled = true;
+            SoltarConectorSistemaCompleto2.enabled = true;
 
 
             colliders.SetActive(false);
@@ -110,7 +98,7 @@ public class ConectorALlave : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // Después de 1 segundo, se ejecuta este código
-        grabbable.enabled = true;
+        //grabbable.enabled = true;
         myGrab.enabled = true;
     }
 }
