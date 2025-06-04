@@ -24,7 +24,7 @@ public class ChildSpawner : MonoBehaviour
     {
         ActiveScript = state == GameState.DesenfundarCateter;
 
-        if(state == GameState.DesecharAguja)
+        if(state == GameState.RecogerMaterial)
         {
             keepNeedle = false;
         }
