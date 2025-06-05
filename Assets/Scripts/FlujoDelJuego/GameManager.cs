@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public GameObject simulationFailedPanel;
     public GameObject InGameMenu;
 
+    [SerializeField] private AudioSource correctSound;
+
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI completeText;
     [SerializeField] TextMeshProUGUI failText;
@@ -249,6 +251,11 @@ public class GameManager : MonoBehaviour
         CambiarEstadoJuego(GameState.SimulationEnded);
         simulationFailedPanel.SetActive(true);
         InGameMenu.SetActive(false);
+    }
+
+    public void stepCompleted()
+    {
+        correctSound.Play();
     }
 
 }

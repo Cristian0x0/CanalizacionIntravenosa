@@ -53,11 +53,12 @@ public class WaterCollision : MonoBehaviour
 
         if (other.CompareTag("Hands") && firstStep)
         {
-            Debug.Log("Colision con agua");
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.BuscarObjetos);
         }
         else if (other.CompareTag("Hands") && lastStep)
         {
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CompleteSimulation();
         }
     }
