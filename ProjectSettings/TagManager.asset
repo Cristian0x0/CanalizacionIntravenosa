@@ -34,6 +34,7 @@ TagManager:
   - Deposito
   - Papelera
   - Paredes
+  - Gancho
   layers:
   - Default
   - TransparentFX

@@ -9,12 +9,16 @@ public class ConectorLlaveCanula : MonoBehaviour
     private ReiniciarPosicion reiniciarPosicion;
     private Rigidbody rb;
     private FixedJoint fixedJoint;
+    private ConfigurableJoint OriginalJoint;
+    private Rigidbody connectedBody;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         myGrab = GetComponent<Grabbable>();
         reiniciarPosicion = GetComponent<ReiniciarPosicion>();
+        OriginalJoint = GetComponent<ConfigurableJoint>();
+        connectedBody = OriginalJoint.connectedBody;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,6 +49,33 @@ public class ConectorLlaveCanula : MonoBehaviour
             if (colliders != null)
                 colliders.SetActive(false);
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.FijarCateter);
+        }
+
+        if (other.CompareTag("Gancho"))
+        {
+            OriginalJoint.connectedBody = null;
+
+            myGrab.enabled = false;
+            StartCoroutine(EsperarUnSegundo());
+
+            // Opcional: bloquear rotación si quieres que no gire más
+            rb.angularVelocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
+
+            //Ubicarlo en la posicion del cateter
+            transform.position = other.transform.position;
+            transform.rotation = other.transform.rotation;
+
+            OriginalJoint.connectedBody = other.attachedRigidbody;
+
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Gancho"))
+        {
+            OriginalJoint.connectedBody = connectedBody;
         }
     }
 
