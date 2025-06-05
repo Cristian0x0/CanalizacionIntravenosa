@@ -35,7 +35,14 @@ public class ReiniciarPosicion : MonoBehaviour
     {
         if (collision.gameObject.tag == "Suelo")
         {
-            resetPosition();
+            if(GameManager.controladorAplicacion.modoJuego == gameMode.Expert)
+            {
+                GameManager.controladorAplicacion.FailedSimulation();
+            }
+            else
+            {
+                resetPosition();
+            }  
         }
     }
 

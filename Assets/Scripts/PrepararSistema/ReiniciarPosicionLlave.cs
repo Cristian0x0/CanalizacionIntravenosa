@@ -30,11 +30,18 @@ public class ReiniciarPosicionLlave : MonoBehaviour
     {
         if (collision.gameObject.tag == "Suelo")
         {
-            resetPosition();
+            if (GameManager.controladorAplicacion.modoJuego == gameMode.Expert)
+            {
+                GameManager.controladorAplicacion.FailedSimulation();
+            }
+            else
+            {
+                resetPosition();
+            }
         }
     }
 
-    public void resetPosition()
+    private void resetPosition()
     {
         cabeza.GetComponent<Grabbable>().enabled = false;
         final.GetComponent<Grabbable>().enabled = false;

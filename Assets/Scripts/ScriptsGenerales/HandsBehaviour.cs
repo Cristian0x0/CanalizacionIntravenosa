@@ -30,6 +30,11 @@ public class HandsBehaviour : MonoBehaviour
         rightHandControllerPinchCollider.enabled = false;
     }
 
+    private void OnDestroy()
+    {
+        GameManager.EnEstadoJuegoCambiado -= ComprobarActivacion;
+    }
+
     private void ComprobarActivacion(GameState state)
     {
         if (state != GameState.MainMenuStep)
