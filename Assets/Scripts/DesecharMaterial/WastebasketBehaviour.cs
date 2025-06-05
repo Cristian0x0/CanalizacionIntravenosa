@@ -45,6 +45,7 @@ public class WastebasketBehaviour : MonoBehaviour
         if(tourniquetRemoved && gauzeRemoved && !stepDone)
         {
             stepDone = true;
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.RetirarGuantes);
         }
     }

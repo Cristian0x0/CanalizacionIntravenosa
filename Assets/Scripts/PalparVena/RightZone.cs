@@ -57,6 +57,7 @@ public class RightZone : MonoBehaviour
                     nearbyArea.hapticSource.Stop();
                     nearbyArea.hapticPlaying = false;
                 }
+                GameManager.controladorAplicacion.stepCompleted();
                 GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.AplicarAntiseptico);
             }
         }

@@ -30,6 +30,7 @@ public class ColliderManager : MonoBehaviour
                 vibrationController.StopHapticFeedback();
                 vibrationController.canVibrate = false;
 
+                GameManager.controladorAplicacion.stepCompleted();
                 GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.RetirarCompresor);
             }
             else

@@ -95,6 +95,7 @@ public class ConectorALlave : MonoBehaviour
 
             stepDone = true;
 
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.ColocarCompresor);
         }
     }

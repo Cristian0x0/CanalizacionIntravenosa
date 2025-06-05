@@ -42,6 +42,7 @@ public class ChildSpawner : MonoBehaviour
         if (ActiveScript && !Done && transform.childCount >= 3)
         {
             Done = true;
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.FijarPielIntroducirAguja);
         }
     }

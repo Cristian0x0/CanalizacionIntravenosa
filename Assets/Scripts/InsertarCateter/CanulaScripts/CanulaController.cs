@@ -42,6 +42,7 @@ public class CanulaController : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Deposito") && rightStep)
             {
+                GameManager.controladorAplicacion.stepCompleted();
                 GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.RecogerMaterial);
             }
             foreach (Transform child in parent)

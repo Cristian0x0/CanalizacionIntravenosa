@@ -49,6 +49,8 @@ public class ConectorLlaveCanula : MonoBehaviour
 
             if (colliders != null)
                 colliders.SetActive(false);
+
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.FijarCateter);
         }
 

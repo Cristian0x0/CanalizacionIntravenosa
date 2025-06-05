@@ -9,6 +9,7 @@ public class DesinfectingArea : MonoBehaviour
     {
         if (other.CompareTag("Gauze") && CanDraw.penDown)
         {
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.PonerseGuantes);
         }
     }

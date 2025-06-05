@@ -43,10 +43,12 @@ public class ControladorGuantes : MonoBehaviour
     {
         if (Paso6 && manoIzquierda.sharedMaterial == guanteIzquierdo && manoDerecha.sharedMaterial == guanteDerecho)
         {
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.DesenfundarCateter);
         }
         else if (Paso18 && manoIzquierda.sharedMaterial == mano && manoDerecha.sharedMaterial == mano)
         {
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.SegundaHigieneDeManos);
         }
     }

@@ -37,6 +37,7 @@ public class ColocarAposito : MonoBehaviour
             }
             Destroy(other.transform.gameObject);
 
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.FijarLlave3Pasos);
         }
     }

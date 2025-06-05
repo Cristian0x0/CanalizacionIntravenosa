@@ -43,6 +43,7 @@ public class secondExtension : MonoBehaviour
             TrozoEsparadrapo.SetActive(true);
             Destroy(tapeGrab.gameObject);
 
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.DesecharAguja);
         }
     }

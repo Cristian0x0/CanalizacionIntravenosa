@@ -30,6 +30,7 @@ public class Torniquete : MonoBehaviour
             }
             Destroy(other.transform.parent.gameObject);
 
+            GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.PalparVena);
         }
     }
