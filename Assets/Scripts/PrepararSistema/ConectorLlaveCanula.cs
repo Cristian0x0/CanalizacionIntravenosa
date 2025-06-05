@@ -11,6 +11,7 @@ public class ConectorLlaveCanula : MonoBehaviour
     private FixedJoint fixedJoint;
     private ConfigurableJoint OriginalJoint;
     private Rigidbody connectedBody;
+    private bool done = false;
 
     private void Start()
     {
@@ -68,14 +69,17 @@ public class ConectorLlaveCanula : MonoBehaviour
 
             OriginalJoint.connectedBody = other.attachedRigidbody;
 
+            done = false;
+
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("Gancho"))
+        if(myGrab.Agarrado && !done)
         {
             OriginalJoint.connectedBody = connectedBody;
+            done = true;
         }
     }
 

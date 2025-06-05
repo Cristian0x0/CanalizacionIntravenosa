@@ -1,4 +1,5 @@
 using Oculus.Interaction;
+using Oculus.Platform.Models;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.VirtualTexturing;
@@ -12,6 +13,7 @@ public class ConectorALlave : MonoBehaviour
     private Grabbable grabbable;
     private Grabbable myGrab;
     private Rigidbody rb;
+    private ConfigurableJoint joint;
 
     private bool stepDone = false;
 
@@ -52,15 +54,17 @@ public class ConectorALlave : MonoBehaviour
             other.transform.position = NuevaPosicion.position;
             other.transform.rotation = NuevaPosicion.rotation;
 
-            ConfigurableJoint joint = grabbable.gameObject.AddComponent<ConfigurableJoint>();
+            //Primer joint
+
+            joint = grabbable.gameObject.AddComponent<ConfigurableJoint>();
             joint.connectedBody = rb;
 
             //other.GetComponent<Rigidbody>().isKinematic = true;
 
             // Configuraciones básicas
-            joint.xMotion = ConfigurableJointMotion.Locked;
-            joint.yMotion = ConfigurableJointMotion.Locked;
-            joint.zMotion = ConfigurableJointMotion.Locked;
+            joint.xMotion = ConfigurableJointMotion.Free;
+            joint.yMotion = ConfigurableJointMotion.Free;
+            joint.zMotion = ConfigurableJointMotion.Free;
 
             joint.angularXMotion = ConfigurableJointMotion.Free;
             joint.angularYMotion = ConfigurableJointMotion.Free;
@@ -68,15 +72,20 @@ public class ConectorALlave : MonoBehaviour
 
             // Usar rotación esférica (Slerp)
             joint.rotationDriveMode = RotationDriveMode.Slerp;
+            joint.targetPosition = Vector3.zero; // Posición objetivo relativa al objeto conectado
 
             JointDrive slerpDrive = new JointDrive
             {
-                positionSpring = 10000f,     // Cuánta fuerza para alinear rotación
-                positionDamper = 100f,       // Amortiguación para evitar temblores
+                positionSpring = 30000f,     // Cuánta fuerza para alinear rotación
+                positionDamper = 200f,       // Amortiguación para evitar temblores
                 maximumForce = Mathf.Infinity
             };
 
             joint.slerpDrive = slerpDrive;
+            joint.xDrive = slerpDrive;
+            joint.yDrive = slerpDrive;
+            joint.zDrive = slerpDrive;
+
 
             SoltarConectorSistemaCompleto.enabled = true;
             SoltarConectorSistemaCompleto2.enabled = true;
@@ -90,7 +99,15 @@ public class ConectorALlave : MonoBehaviour
         }
     }
 
-
+    public void deleteJoint()
+    {
+        if (joint == null) return;
+        Destroy(joint);
+        SoltarConectorSistemaCompleto.enabled = false;
+        SoltarConectorSistemaCompleto2.enabled = false;
+        colliders.SetActive(true);
+        stepDone = false;
+    }
 
     IEnumerator EsperarUnSegundo()
     {

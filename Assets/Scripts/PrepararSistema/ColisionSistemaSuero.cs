@@ -6,6 +6,7 @@ public class ColisionSistemaSuero : MonoBehaviour
     public Transform puntoColocacion; // Lista de puntos de colocación
     private GameObject sistema;
     private Rigidbody rb;
+    [SerializeField] private Collider colliderSistema;
 
     public ColisionSueroSoporte sePuedeConectar;
     [HideInInspector] public bool pinchoConectado = false;
@@ -62,6 +63,7 @@ public class ColisionSistemaSuero : MonoBehaviour
             sistema.GetComponent<SistemaGrabbable>().enabled = true;
 
             pinchoConectado = true;
+            colliderSistema.enabled = false;
         }
     }
 }
