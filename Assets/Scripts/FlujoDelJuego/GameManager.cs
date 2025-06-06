@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     float elapsedTime;
     float remainingTime;
 
+    [SerializeField] private List<GameObject> arrows;
+
     private Dictionary<GameState, float> tiempoLimitiePaso = new Dictionary<GameState, float>()
     {
         { GameState.PrimeraHigieneDeManos, 30f },
@@ -139,11 +141,13 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.BuscarObjetos:
                 if (modoJuego != gameMode.Normal) break;
+                activateArrows();
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[1]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[1]);
                 break;
             case GameState.PrepararSistema:
                 if (modoJuego != gameMode.Normal) break;
+                deactivateArrows();
                 LEDPantallas.SetTexture("_BaseMap", Instrucciones[2]);
                 LEDPantallas.SetTexture("_EmissionMap", Instrucciones[2]);
 
@@ -256,6 +260,22 @@ public class GameManager : MonoBehaviour
     public void stepCompleted()
     {
         correctSound.Play();
+    }
+
+    private void activateArrows()
+    {
+        foreach (GameObject arrow in arrows)
+        {
+            arrow.SetActive(true);
+        }
+    }
+
+    private void deactivateArrows()
+    {
+        foreach (GameObject arrow in arrows)
+        {
+            arrow.SetActive(false);
+        }
     }
 
 }

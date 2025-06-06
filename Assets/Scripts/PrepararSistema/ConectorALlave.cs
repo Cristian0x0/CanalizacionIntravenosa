@@ -17,6 +17,8 @@ public class ConectorALlave : MonoBehaviour
 
     private bool stepDone = false;
 
+    private bool nextLevel = true;
+
     [SerializeField] private ColisionSistemaSuero colisionSistemaSuero;
 
 
@@ -95,8 +97,12 @@ public class ConectorALlave : MonoBehaviour
 
             stepDone = true;
 
-            GameManager.controladorAplicacion.stepCompleted();
-            GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.ColocarCompresor);
+            if (nextLevel)
+            {
+                GameManager.controladorAplicacion.stepCompleted();
+                GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.ColocarCompresor);
+                nextLevel = false;
+            }
         }
     }
 
