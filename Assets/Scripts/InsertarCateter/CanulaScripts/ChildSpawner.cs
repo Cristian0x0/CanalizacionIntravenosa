@@ -10,6 +10,8 @@ public class ChildSpawner : MonoBehaviour
     private bool keepNeedle = true;
     private bool Done = false;
 
+    [HideInInspector] public bool canRemoveNeedle = false; //Este parametro lo controlamos para el canula controller, ya que necesitamos saber si estamos en el paso correcto en un objeto que no puede predecirlo siempre.
+
     private void Awake()
     {
         GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
@@ -24,7 +26,9 @@ public class ChildSpawner : MonoBehaviour
     {
         ActiveScript = state == GameState.DesenfundarCateter;
 
-        if(state == GameState.RecogerMaterial)
+        canRemoveNeedle = state == GameState.DesecharAguja;
+
+        if (state == GameState.RecogerMaterial)
         {
             keepNeedle = false;
         }
