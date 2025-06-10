@@ -266,7 +266,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject arrow in arrows)
         {
-            arrow.SetActive(true);
+            if (arrow != null) arrow.SetActive(true);
         }
     }
 
@@ -274,7 +274,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject arrow in arrows)
         {
-            arrow.SetActive(false);
+            if(arrow!=null) arrow.SetActive(false);
         }
     }
 
