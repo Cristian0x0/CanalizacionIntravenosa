@@ -20,8 +20,7 @@ public class CintaGrabbable : MonoBehaviour
         grabbable.Agarrado = false;
         meshRenderer = transform.Find("Visuals/EsparadrapoMesh/Mesh")?.GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
-
-        Debug.Log("Estoy siendo creado");
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 
     private void Start()
