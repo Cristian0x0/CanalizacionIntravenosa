@@ -24,9 +24,8 @@ public class ConectorLlaveCanula : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("ConectorCateter"))
+        if (other.CompareTag("ConectorCateter") || other.CompareTag("Gancho"))
         {
-            // Asegurarse de que no tenga un joint previo
             if (fixedJoint != null) Destroy(fixedJoint);
 
             myGrab.enabled = false;
@@ -44,6 +43,10 @@ public class ConectorLlaveCanula : MonoBehaviour
             fixedJoint = gameObject.AddComponent<FixedJoint>();
             fixedJoint.connectedBody = other.attachedRigidbody;
 
+            done = false;
+
+            if (other.CompareTag("Gancho")) return;
+
             if (reiniciarPosicion != null)
                 reiniciarPosicion.enabled = false;
 
@@ -53,35 +56,14 @@ public class ConectorLlaveCanula : MonoBehaviour
             GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.FijarCateter);
         }
-
-        if (other.CompareTag("Gancho"))
-        {
-            OriginalJoint.connectedBody = null;
-
-            myGrab.enabled = false;
-            StartCoroutine(EsperarUnSegundo());
-
-            // Opcional: bloquear rotación si quieres que no gire más
-            rb.angularVelocity = Vector3.zero;
-            rb.linearVelocity = Vector3.zero;
-
-            //Ubicarlo en la posicion del cateter
-            transform.position = other.transform.position;
-            transform.rotation = other.transform.rotation;
-
-            OriginalJoint.connectedBody = other.attachedRigidbody;
-
-            done = false;
-
-        }
     }
 
-    private void Update()
+
+    private void OnTriggerExit(Collider other)
     {
-        if(myGrab.Agarrado && !done)
+        if (other.CompareTag("Gancho") && myGrab.Agarrado)
         {
-            OriginalJoint.connectedBody = connectedBody;
-            done = true;
+            if (fixedJoint != null) Destroy(fixedJoint);
         }
     }
 

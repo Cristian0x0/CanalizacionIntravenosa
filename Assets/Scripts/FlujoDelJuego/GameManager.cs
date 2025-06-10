@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
         remainingTime = 1f;
         simulationCompletePanel.SetActive(false);
         simulationFailedPanel.SetActive(false);
+        ConectarLlaveACateter.SetActive(false);
     }
 
     private void Start()
@@ -121,7 +122,6 @@ public class GameManager : MonoBehaviour
         palparVena.SetActive(false);
         DesinfectarZona.SetActive(false);
         Puncion.SetActive(false);
-        ConectarLlaveACateter.SetActive(false);
 
         if (modoJuego == gameMode.Expert)
         {
