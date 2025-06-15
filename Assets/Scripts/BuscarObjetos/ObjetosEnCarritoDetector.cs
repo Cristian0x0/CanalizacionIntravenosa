@@ -60,14 +60,22 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         else if (other.CompareTag("Torniquete"))
         {
             cantidadTorniquete++;
+            other.transform.parent.SetParent(ObjetosDentroCarrito);
         }
         else if (other.CompareTag("Suero"))
         {
             cantidadSuero++;
+            other.transform.SetParent(ObjetosDentroCarrito);
         }
         else if (other.CompareTag("Gauze"))
         {
             cantidadGasa++;
+            other.transform.parent.SetParent(ObjetosDentroCarrito);
+        }
+        else if (other.CompareTag("SistemaSuero"))
+        {
+            cantidadGasa++;
+            other.transform.SetParent(ObjetosDentroCarrito);
         }
     }
 
@@ -96,14 +104,21 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         else if (other.CompareTag("Torniquete"))
         {
             cantidadTorniquete--;
+            other.transform.parent.SetParent(ObjetosFueraCarrito);
         }
         else if (other.CompareTag("Suero"))
         {
             cantidadSuero--;
+            other.transform.SetParent(ObjetosFueraCarrito);
         }
         else if (other.CompareTag("Gauze"))
         {
             cantidadGasa--;
+            other.transform.parent.SetParent(ObjetosFueraCarrito);
+        }
+        else if (other.CompareTag("SistemaSuero"))
+        {
+            other.transform.SetParent(ObjetosFueraCarrito);
         }
     }
 }

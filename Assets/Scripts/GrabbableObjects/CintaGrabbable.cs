@@ -1,8 +1,5 @@
 using UnityEngine;
 using Oculus.Interaction;
-using System;
-using Meta.XR.MRUtilityKit;
-using System.Collections;
 
 public class CintaGrabbable : MonoBehaviour
 {
@@ -22,7 +19,7 @@ public class CintaGrabbable : MonoBehaviour
         grabbable.Agarrado = false;
         meshRenderer = transform.Find("Visuals/EsparadrapoMesh/Mesh")?.GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
-        GetComponent<Rigidbody>().isKinematic = false;
+        
     }
 
     private void Start()
@@ -39,22 +36,15 @@ public class CintaGrabbable : MonoBehaviour
             GameObject nuevoTrozo = Instantiate(TrozoEsparatrapo, Spawn.position, Quaternion.identity);
             nuevoTrozo.transform.SetParent(transform.parent);
         }
-    }
-
-    IEnumerator SafeDestroy()
-    {
-        grabbable.enabled = false;
-        myCollider.enabled = false;
-        meshRenderer.enabled = false;
-        gameObject.SetActive(false);
-
-        yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
+        else if (!grabbable.Agarrado && SoloUnUso)
+        {
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Suelo"))
-            StartCoroutine(SafeDestroy());
+            gameObject.SetActive(false);
     }
 }

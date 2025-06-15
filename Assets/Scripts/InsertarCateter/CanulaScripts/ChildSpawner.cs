@@ -4,6 +4,7 @@ public class ChildSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
     [SerializeField] private NeedleVibration needleVibration;
+    [SerializeField] private Transform ObjetosFueraCarrito;
     private Vector3 localPosition = Vector3.zero;
     private Vector3 posicionInicial;
     private Quaternion rotacionInicial;
@@ -44,6 +45,7 @@ public class ChildSpawner : MonoBehaviour
     {
         if (transform.childCount == 0 && keepNeedle)
         {
+            transform.SetParent(ObjetosFueraCarrito);
             transform.position = posicionInicial;
             transform.rotation = rotacionInicial;
             GameObject newChild = Instantiate(prefab, transform);
