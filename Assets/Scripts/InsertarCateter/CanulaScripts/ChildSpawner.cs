@@ -5,6 +5,9 @@ public class ChildSpawner : MonoBehaviour
     [SerializeField] private GameObject prefab;
     [SerializeField] private NeedleVibration needleVibration;
     private Vector3 localPosition = Vector3.zero;
+    private Vector3 posicionInicial;
+    private Quaternion rotacionInicial;
+
 
     private bool ActiveScript = false;
     private bool keepNeedle = true;
@@ -12,9 +15,12 @@ public class ChildSpawner : MonoBehaviour
 
     [HideInInspector] public bool canRemoveNeedle = false; //Este parametro lo controlamos para el canula controller, ya que necesitamos saber si estamos en el paso correcto en un objeto que no puede predecirlo siempre.
 
-    private void Awake()
+    private void Start()
     {
         GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
+        posicionInicial = transform.position;
+        rotacionInicial = transform.rotation;
+
     }
 
     private void OnDestroy()
@@ -38,6 +44,8 @@ public class ChildSpawner : MonoBehaviour
     {
         if (transform.childCount == 0 && keepNeedle)
         {
+            transform.position = posicionInicial;
+            transform.rotation = rotacionInicial;
             GameObject newChild = Instantiate(prefab, transform);
             newChild.transform.localPosition = localPosition;
             needleVibration.elapsedTime = 0f;

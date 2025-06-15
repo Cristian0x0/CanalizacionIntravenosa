@@ -45,10 +45,12 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         else if (other.CompareTag("Aposito"))
         {
             cantidadAposito++;
+            other.transform.SetParent(ObjetosDentroCarrito);
         }
         else if (other.CompareTag("Canula"))
         {
             cantidadCanula++;
+            other.transform.parent.SetParent(ObjetosDentroCarrito);
         }
         else if (other.CompareTag("Llave3Pasos"))
         {
@@ -78,10 +80,12 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         else if (other.CompareTag("Aposito"))
         {
             cantidadAposito--;
+            other.transform.SetParent(ObjetosFueraCarrito);
         }
         else if (other.CompareTag("Canula"))
         {
             cantidadCanula--;
+            other.transform.parent.SetParent(ObjetosFueraCarrito);
         }
         else if (other.CompareTag("Llave3Pasos"))
         {
