@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObjetosEnCarritoDetector : MonoBehaviour
 {
-    private int cantidadAlcohol = 0, cantidadCanula = 0, cantidadLlaves = 0, cantidadAposito = 0, cantidadTorniquete = 0, cantidadSuero = 0;
+    private int cantidadAlcohol = 0, cantidadCanula = 0, cantidadLlaves = 0, cantidadAposito = 0, cantidadTorniquete = 0, cantidadSuero = 0, cantidadGasa = 0;
     private bool ScriptActivo = false;
 
     private void Start()
@@ -23,7 +23,7 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
     private void Update()
     {
         if (!ScriptActivo) return;
-        if (cantidadAlcohol != 0 && cantidadCanula != 0 && cantidadLlaves != 0 && cantidadAposito != 0 && cantidadTorniquete!= 0 && cantidadSuero!= 0)
+        if (cantidadAlcohol != 0 && cantidadCanula != 0 && cantidadLlaves != 0 && cantidadAposito != 0 && cantidadTorniquete!= 0 && cantidadSuero!= 0 && cantidadGasa!= 0)
         {
             GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.PrepararSistema);
@@ -37,32 +37,30 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         if (other.CompareTag("Alcohol"))
         {
             cantidadAlcohol++;
-            Debug.Log("entra" + other.name);
         }
         else if (other.CompareTag("Aposito"))
         {
             cantidadAposito++;
-            Debug.Log("entra" + other.name);
         }
         else if (other.CompareTag("Canula"))
         {
             cantidadCanula++;
-            Debug.Log("entra" + other.name);
         }
         else if (other.CompareTag("Llave3Pasos"))
         {
             cantidadLlaves++;
-            Debug.Log("entra" + other.name);
         }
         else if (other.CompareTag("Torniquete"))
         {
             cantidadTorniquete++;
-            Debug.Log("entra" + other.name);
         }
         else if (other.CompareTag("Suero"))
         {
             cantidadSuero++;
-            Debug.Log("entra" + other.name);
+        }
+        else if (other.CompareTag("Gauze"))
+        {
+            cantidadGasa++;
         }
     }
 
@@ -91,6 +89,10 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         else if (other.CompareTag("Suero"))
         {
             cantidadSuero--;
+        }
+        else if (other.CompareTag("Gauze"))
+        {
+            cantidadGasa--;
         }
     }
 }
