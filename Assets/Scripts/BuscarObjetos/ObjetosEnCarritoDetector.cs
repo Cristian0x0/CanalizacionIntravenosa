@@ -5,6 +5,9 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
     private int cantidadAlcohol = 0, cantidadCanula = 0, cantidadLlaves = 0, cantidadAposito = 0, cantidadTorniquete = 0, cantidadSuero = 0, cantidadGasa = 0;
     private bool ScriptActivo = false;
 
+    [SerializeField] private Transform ObjetosFueraCarrito;
+    [SerializeField] private Transform ObjetosDentroCarrito;
+
     private void Start()
     {
         GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
@@ -37,6 +40,7 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         if (other.CompareTag("Alcohol"))
         {
             cantidadAlcohol++;
+            other.transform.parent.SetParent(ObjetosDentroCarrito);
         }
         else if (other.CompareTag("Aposito"))
         {
@@ -69,6 +73,7 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         if (other.CompareTag("Alcohol"))
         {
             cantidadAlcohol--;
+            other.transform.parent.SetParent(ObjetosFueraCarrito);
         }
         else if (other.CompareTag("Aposito"))
         {
