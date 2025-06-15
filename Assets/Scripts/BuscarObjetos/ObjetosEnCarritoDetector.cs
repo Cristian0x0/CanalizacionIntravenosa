@@ -55,6 +55,7 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         else if (other.CompareTag("Llave3Pasos"))
         {
             cantidadLlaves++;
+            other.transform.SetParent(ObjetosDentroCarrito);
         }
         else if (other.CompareTag("Torniquete"))
         {
@@ -90,6 +91,7 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         else if (other.CompareTag("Llave3Pasos"))
         {
             cantidadLlaves--;
+            other.transform.SetParent(ObjetosFueraCarrito);
         }
         else if (other.CompareTag("Torniquete"))
         {

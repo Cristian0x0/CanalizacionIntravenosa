@@ -2,6 +2,7 @@ using UnityEngine;
 using Oculus.Interaction;
 using System;
 using Meta.XR.MRUtilityKit;
+using System.Collections;
 
 public class CintaGrabbable : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class CintaGrabbable : MonoBehaviour
     private bool SoloUnUso = false;
     private MeshRenderer meshRenderer;
     private Transform Spawn;
+    [SerializeField] private Collider myCollider;
 
     void Awake()
     {
@@ -39,11 +41,20 @@ public class CintaGrabbable : MonoBehaviour
         }
     }
 
+    IEnumerator SafeDestroy()
+    {
+        grabbable.enabled = false;
+        myCollider.enabled = false;
+        meshRenderer.enabled = false;
+        gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Suelo"))
-        {
-            Destroy(gameObject);
-        }
+            StartCoroutine(SafeDestroy());
     }
 }
