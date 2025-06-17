@@ -3,6 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
     float remainingTime;
 
     [SerializeField] private List<GameObject> arrows;
+    [SerializeField] private List<Button> AchievementsButtons;
+    [SerializeField] private List<Sprite> Achievements;
 
     private Dictionary<GameState, float> tiempoLimitiePaso = new Dictionary<GameState, float>()
     {
@@ -276,6 +279,56 @@ public class GameManager : MonoBehaviour
         {
             if(arrow!=null) arrow.SetActive(false);
         }
+    }
+
+    //Funciones que se ejecutan al conseguir un logro
+
+    public void EverythingInPlaceAchievement()
+    {
+        if (AchievementsButtons[0].image.sprite = Achievements[0]) return;
+        AchievementsButtons[0].image.sprite = Achievements[0];
+    }
+
+    public void SteadyHandsAchievement()
+    {
+        if (AchievementsButtons[1].image.sprite == Achievements[1]) return;
+        AchievementsButtons[1].image.sprite = Achievements[1];
+    }
+
+    public void TrueProfessionalAchievement()
+    {
+        if (AchievementsButtons[2].image.sprite == Achievements[2]) return;
+        AchievementsButtons[2].image.sprite = Achievements[2];
+    }
+
+    public void UnmatchedNurseAchievement()
+    {
+        if (AchievementsButtons[3].image.sprite == Achievements[3]) return;
+        AchievementsButtons[3].image.sprite = Achievements[3];
+    }
+
+    public void GreatLearnerAchievement()
+    {
+        if (AchievementsButtons[4].image.sprite == Achievements[4]) return;
+        AchievementsButtons[4].image.sprite = Achievements[4];
+    }
+
+    public void AbsoluteDedicationAchievement()
+    {
+        if (AchievementsButtons[5].image.sprite == Achievements[5]) return;
+        AchievementsButtons[5].image.sprite = Achievements[5];
+    }
+
+    public void ReadyForActionAchievement()
+    {
+        if (AchievementsButtons[6].image.sprite == Achievements[6]) return;
+        AchievementsButtons[6].image.sprite = Achievements[6];
+    }
+
+    public void ABrightFutureAchievement()
+    {
+        if (AchievementsButtons[7].image.sprite == Achievements[7]) return;
+        AchievementsButtons[7].image.sprite = Achievements[7];
     }
 
 }

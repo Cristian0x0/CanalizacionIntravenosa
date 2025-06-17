@@ -11,6 +11,8 @@ public class MainMenuBehaviour : MonoBehaviour
     [SerializeField] private GameObject Settings;
     [SerializeField] private GameObject AchievementsPanel;
     [SerializeField] TextMeshProUGUI infoModeText;
+    [SerializeField] TextMeshProUGUI AchievementTitleText;
+    [SerializeField] TextMeshProUGUI AchievementDescriptionText;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,6 +30,7 @@ public class MainMenuBehaviour : MonoBehaviour
     {
         GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.PrimeraHigieneDeManos);
         MainMenu.SetActive(false);
+        AchievementsPanel.SetActive(false);
         InGameMenu.SetActive(true);
     }
 
@@ -86,11 +89,69 @@ public class MainMenuBehaviour : MonoBehaviour
 
     public void AchievementsButton()
     {
+        AchievementTitleText.text = "Choose achievement";
+        AchievementDescriptionText.text = "";
         AchievementsPanel.SetActive(!AchievementsPanel.activeSelf);
     }
 
     public void CloseButton()
     {
         AchievementsPanel.SetActive(false);
+    }
+
+    public void EverythingInPlaceButton()
+    {
+        GameManager.controladorAplicacion.EverythingInPlaceAchievement();
+        AchievementTitleText.text = "Everything in its place";
+        AchievementDescriptionText.text = "Place all the necessary items for the procedure on the medical cart";
+    }
+
+    public void SteadyHandsButton()
+    {
+        GameManager.controladorAplicacion.SteadyHandsAchievement();
+        AchievementTitleText.text = "Steady hands";
+        AchievementDescriptionText.text = "Successfully complete all phases without any object falling to the floor";
+    }
+
+    public void TrueProfessionalButton()
+    {
+        GameManager.controladorAplicacion.TrueProfessionalAchievement();
+        AchievementTitleText.text = "A true professional";
+        AchievementDescriptionText.text = "Complete the entire practice in less than a stipulated time";
+    }
+
+    public void UnmatchedNurseButton()
+    {
+        GameManager.controladorAplicacion.UnmatchedNurseAchievement();
+        AchievementTitleText.text = "Unmatched nurse";
+        AchievementDescriptionText.text = "Find the correct vein on the first attempt";
+    }
+
+    public void GreatLearnerButton()
+    {
+        GameManager.controladorAplicacion.GreatLearnerAchievement();
+        AchievementTitleText.text = "A great learner";
+        AchievementDescriptionText.text = "Complete the practice for the first time";
+    }
+
+    public void AbsoluteDedicationButton()
+    {
+        GameManager.controladorAplicacion.AbsoluteDedicationAchievement();
+        AchievementTitleText.text = "Absolute dedication";
+        AchievementDescriptionText.text = "Repeat the practice 3 times or more";
+    }
+
+    public void ReadyForActionButton()
+    {
+        GameManager.controladorAplicacion.ReadyForActionAchievement();
+        AchievementTitleText.text = "Ready for action";
+        AchievementDescriptionText.text = "Complete the practice without visual aids";
+    }
+
+    public void ABrightFutureButton()
+    {
+        GameManager.controladorAplicacion.ABrightFutureAchievement();
+        AchievementTitleText.text = "A bright future";
+        AchievementDescriptionText.text = "Complete the practice in expert mode";
     }
 }
