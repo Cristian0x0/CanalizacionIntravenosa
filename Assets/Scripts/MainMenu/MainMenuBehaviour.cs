@@ -9,6 +9,7 @@ public class MainMenuBehaviour : MonoBehaviour
     [SerializeField] private GameObject GameModeButtons;
     [SerializeField] private GameObject MainButtons;
     [SerializeField] private GameObject Settings;
+    [SerializeField] private GameObject AchievementsPanel;
     [SerializeField] TextMeshProUGUI infoModeText;
 
 
@@ -20,6 +21,7 @@ public class MainMenuBehaviour : MonoBehaviour
         MainButtons.SetActive(true);
         Settings.SetActive(false);
         InGameMenu.SetActive(false);
+        AchievementsPanel.SetActive(false);
     }
 
     public void startButton()
@@ -80,5 +82,15 @@ public class MainMenuBehaviour : MonoBehaviour
     public void endButton()
     {
         SceneManager.LoadSceneAsync("MainScene");
+    }
+
+    public void AchievementsButton()
+    {
+        AchievementsPanel.SetActive(!AchievementsPanel.activeSelf);
+    }
+
+    public void CloseButton()
+    {
+        AchievementsPanel.SetActive(false);
     }
 }
