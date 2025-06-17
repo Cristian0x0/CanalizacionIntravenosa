@@ -101,56 +101,56 @@ public class MainMenuBehaviour : MonoBehaviour
 
     public void EverythingInPlaceButton()
     {
-        GameManager.controladorAplicacion.EverythingInPlaceAchievement();
+        KeepAchievements.instance.EverythingInPlaceAchievement();
         AchievementTitleText.text = "Everything in its place";
         AchievementDescriptionText.text = "Place all the necessary items for the procedure on the medical cart";
     }
 
     public void SteadyHandsButton()
     {
-        GameManager.controladorAplicacion.SteadyHandsAchievement();
+        KeepAchievements.instance.SteadyHandsAchievement();
         AchievementTitleText.text = "Steady hands";
         AchievementDescriptionText.text = "Successfully complete all phases without any object falling to the floor";
     }
 
     public void TrueProfessionalButton()
     {
-        GameManager.controladorAplicacion.TrueProfessionalAchievement();
+        KeepAchievements.instance.TrueProfessionalAchievement();
         AchievementTitleText.text = "A true professional";
         AchievementDescriptionText.text = "Complete the entire practice in less than a stipulated time";
     }
 
     public void UnmatchedNurseButton()
     {
-        GameManager.controladorAplicacion.UnmatchedNurseAchievement();
+        KeepAchievements.instance.UnmatchedNurseAchievement();
         AchievementTitleText.text = "Unmatched nurse";
         AchievementDescriptionText.text = "Find the correct vein on the first attempt";
     }
 
     public void GreatLearnerButton()
     {
-        GameManager.controladorAplicacion.GreatLearnerAchievement();
+        KeepAchievements.instance.GreatLearnerAchievement();
         AchievementTitleText.text = "A great learner";
         AchievementDescriptionText.text = "Complete the practice for the first time";
     }
 
     public void AbsoluteDedicationButton()
     {
-        GameManager.controladorAplicacion.AbsoluteDedicationAchievement();
+        KeepAchievements.instance.AbsoluteDedicationAchievement();
         AchievementTitleText.text = "Absolute dedication";
         AchievementDescriptionText.text = "Repeat the practice 3 times or more";
     }
 
     public void ReadyForActionButton()
     {
-        GameManager.controladorAplicacion.ReadyForActionAchievement();
+        KeepAchievements.instance.ReadyForActionAchievement();
         AchievementTitleText.text = "Ready for action";
         AchievementDescriptionText.text = "Complete the practice without visual aids";
     }
 
     public void ABrightFutureButton()
     {
-        GameManager.controladorAplicacion.ABrightFutureAchievement();
+        KeepAchievements.instance.ABrightFutureAchievement();
         AchievementTitleText.text = "A bright future";
         AchievementDescriptionText.text = "Complete the practice in expert mode";
     }
