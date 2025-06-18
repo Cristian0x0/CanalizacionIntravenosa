@@ -13,6 +13,8 @@ public class KeepAchievements : MonoBehaviour
 
     private List<Action> achievementFunctions;
 
+    private Notifications notifications;
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -28,6 +30,8 @@ public class KeepAchievements : MonoBehaviour
 
     public void updateAchievements()
     {
+        notifications = GameObject.Find("NotificationsCanvas").GetComponent<Notifications>();
+
         //Tenemos que volver a referenciar los botones en cada reinicio
         GameObject panel = GameObject.Find("AchievementsButtons");
         if (panel != null)
@@ -51,6 +55,7 @@ public class KeepAchievements : MonoBehaviour
 
     public void EverythingInPlaceAchievement()
     {
+        notifications.ShowNotification("Achievement Unlocked: Everything In Place!");
         if (AchievementsButtons[0].image.sprite == Achievements[0]) return;
         Achieved[0] = true;
         AchievementsButtons[0].image.sprite = Achievements[0];
