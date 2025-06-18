@@ -33,6 +33,23 @@ public class KeepAchievements : MonoBehaviour
         if (SimulationCompleteTimes == 3) AbsoluteDedicationAchievement();
         notifications = GameObject.Find("NotificationsCanvas").GetComponent<Notifications>();
 
+
+
+
+
+
+        GameObject notifObj = GameObject.Find("NotificationsCanvas");
+        if (notifObj != null)
+            notifications = notifObj.GetComponent<Notifications>();
+        else
+            Debug.LogWarning("NotificationsCanvas no encontrado. Las notificaciones no se mostrarán.");
+
+
+
+
+
+
+
         //Tenemos que volver a referenciar los botones en cada reinicio
         GameObject panel = GameObject.Find("AchievementsButtons");
         if (panel != null)
