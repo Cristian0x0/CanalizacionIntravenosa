@@ -55,7 +55,7 @@ public class KeepAchievements : MonoBehaviour
 
     public void EverythingInPlaceAchievement()
     {
-        notifications.ShowNotification("Achievement Unlocked: Everything In Place!");
+        notifications.ShowNotification(0);
         if (AchievementsButtons[0].image.sprite == Achievements[0]) return;
         Achieved[0] = true;
         AchievementsButtons[0].image.sprite = Achievements[0];
@@ -63,6 +63,7 @@ public class KeepAchievements : MonoBehaviour
 
     public void SteadyHandsAchievement()
     {
+        notifications.ShowNotification(1);
         if (AchievementsButtons[1].image.sprite == Achievements[1]) return;
         Achieved[1] = true;
         AchievementsButtons[1].image.sprite = Achievements[1];
@@ -70,6 +71,7 @@ public class KeepAchievements : MonoBehaviour
 
     public void TrueProfessionalAchievement()
     {
+        notifications.ShowNotification(2);
         if (AchievementsButtons[2].image.sprite == Achievements[2]) return;
         Achieved[2] = true;
         AchievementsButtons[2].image.sprite = Achievements[2];
@@ -77,6 +79,7 @@ public class KeepAchievements : MonoBehaviour
 
     public void UnmatchedNurseAchievement()
     {
+        notifications.ShowNotification(3);
         if (AchievementsButtons[3].image.sprite == Achievements[3]) return;
         Achieved[3] = true;
         AchievementsButtons[3].image.sprite = Achievements[3];
@@ -84,6 +87,7 @@ public class KeepAchievements : MonoBehaviour
 
     public void GreatLearnerAchievement()
     {
+        notifications.ShowNotification(4);
         if (AchievementsButtons[4].image.sprite == Achievements[4]) return;
         Achieved[4] = true;
         AchievementsButtons[4].image.sprite = Achievements[4];
@@ -91,6 +95,7 @@ public class KeepAchievements : MonoBehaviour
 
     public void AbsoluteDedicationAchievement()
     {
+        notifications.ShowNotification(5);
         if (AchievementsButtons[5].image.sprite == Achievements[5]) return;
         Achieved[5] = true;
         AchievementsButtons[5].image.sprite = Achievements[5];
@@ -98,6 +103,7 @@ public class KeepAchievements : MonoBehaviour
 
     public void ReadyForActionAchievement()
     {
+        notifications.ShowNotification(6);
         if (AchievementsButtons[6].image.sprite == Achievements[6]) return;
         Achieved[6] = true;
         AchievementsButtons[6].image.sprite = Achievements[6];
@@ -105,6 +111,7 @@ public class KeepAchievements : MonoBehaviour
 
     public void ABrightFutureAchievement()
     {
+        notifications.ShowNotification(7);
         if (AchievementsButtons[7].image.sprite == Achievements[7]) return;
         Achieved[7] = true;
         AchievementsButtons[7].image.sprite = Achievements[7];

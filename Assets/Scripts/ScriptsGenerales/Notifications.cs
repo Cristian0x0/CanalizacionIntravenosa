@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Notifications : MonoBehaviour
 {
     [SerializeField] private RectTransform toastPanel;
     [SerializeField] private AudioSource notificationSound;
+    [SerializeField] private List<Sprite> notificationSprites;
 
     [SerializeField] private float slideDuration = 0.5f;
     [SerializeField] private float visibleDuration = 2f;
@@ -20,8 +23,9 @@ public class Notifications : MonoBehaviour
         toastPanel.gameObject.SetActive(false);
     }
 
-    public void ShowNotification(string message)
+    public void ShowNotification(int i)
     {
+        toastPanel.GetComponent<Image>().sprite = notificationSprites[i];
         StopAllCoroutines();
         StartCoroutine(ShowToastCoroutine());
     }
