@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
     float elapsedTime;
     float remainingTime;
 
+    public float timeLimit = 180f; //Tiempo limite para conseguir el logro "True professional"
+    public bool ObjetosCaidos = false; //Para el logro "Steady Hands"
+
     [SerializeField] private List<GameObject> arrows;
 
     private Dictionary<GameState, float> tiempoLimitiePaso = new Dictionary<GameState, float>()
@@ -247,6 +250,21 @@ public class GameManager : MonoBehaviour
 
     public void CompleteSimulation()
     {
+        if (!ObjetosCaidos) KeepAchievements.instance.SteadyHandsAchievement();
+        if(elapsedTime < timeLimit) KeepAchievements.instance.TrueProfessionalAchievement();
+        KeepAchievements.instance.SimulationCompleteTimes++;
+
+        if (modoJuego != gameMode.Normal)
+        {
+            KeepAchievements.instance.ReadyForActionAchievement();
+
+            if(modoJuego == gameMode.Expert)
+            {
+                KeepAchievements.instance.ABrightFutureAchievement();
+            }
+
+        }
+
         CambiarEstadoJuego(GameState.SimulationEnded);
         simulationCompletePanel.SetActive(true);
         InGameMenu.SetActive(false);

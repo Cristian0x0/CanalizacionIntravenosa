@@ -42,7 +42,8 @@ public class ReiniciarPosicion : MonoBehaviour
             else
             {
                 resetPosition();
-            }  
+            }
+            GameManager.controladorAplicacion.ObjetosCaidos = true;
         }
     }
 

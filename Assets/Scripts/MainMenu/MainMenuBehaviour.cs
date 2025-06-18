@@ -101,56 +101,49 @@ public class MainMenuBehaviour : MonoBehaviour
 
     public void EverythingInPlaceButton()
     {
-        KeepAchievements.instance.EverythingInPlaceAchievement();
         AchievementTitleText.text = "Everything in its place";
         AchievementDescriptionText.text = "Place all the necessary items for the procedure on the medical cart";
     }
 
     public void SteadyHandsButton()
     {
-        KeepAchievements.instance.SteadyHandsAchievement();
         AchievementTitleText.text = "Steady hands";
         AchievementDescriptionText.text = "Successfully complete all phases without any object falling to the floor";
     }
 
     public void TrueProfessionalButton()
     {
-        KeepAchievements.instance.TrueProfessionalAchievement();
         AchievementTitleText.text = "A true professional";
-        AchievementDescriptionText.text = "Complete the entire practice in less than a stipulated time";
+        AchievementDescriptionText.text = "Complete the entire practice in less than 3 minutes";
     }
 
     public void UnmatchedNurseButton()
     {
-        KeepAchievements.instance.UnmatchedNurseAchievement();
         AchievementTitleText.text = "Unmatched nurse";
         AchievementDescriptionText.text = "Find the correct vein on the first attempt";
     }
 
     public void GreatLearnerButton()
     {
-        KeepAchievements.instance.GreatLearnerAchievement();
+        
         AchievementTitleText.text = "A great learner";
         AchievementDescriptionText.text = "Complete the practice for the first time";
     }
 
     public void AbsoluteDedicationButton()
     {
-        KeepAchievements.instance.AbsoluteDedicationAchievement();
         AchievementTitleText.text = "Absolute dedication";
         AchievementDescriptionText.text = "Repeat the practice 3 times or more";
     }
 
     public void ReadyForActionButton()
     {
-        KeepAchievements.instance.ReadyForActionAchievement();
         AchievementTitleText.text = "Ready for action";
         AchievementDescriptionText.text = "Complete the practice without visual aids";
     }
 
     public void ABrightFutureButton()
     {
-        KeepAchievements.instance.ABrightFutureAchievement();
         AchievementTitleText.text = "A bright future";
         AchievementDescriptionText.text = "Complete the practice in expert mode";
     }

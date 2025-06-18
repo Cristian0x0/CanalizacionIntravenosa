@@ -14,6 +14,8 @@ public class RightZone : MonoBehaviour
     private float stayTimer = 0f;
     private bool timerActive = false;
 
+    private int contactCount = 0; //Para saber cuantas veces ha sido encontrada la vena antes de pasar al siguiente paso. Si solo es una vez significa que lo ha conseguido a la primera, y por lo tanto el usuario obtiene el logro "Unmatched Nurse"
+
     [SerializeField] private NearbyArea nearbyArea;
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +23,8 @@ public class RightZone : MonoBehaviour
         if (other.CompareTag("Hands") && !handsInside.Contains(other.transform))
         {
             handsInside.Add(other.transform);
+
+            contactCount++;
 
             if (!timerActive)
             {
@@ -56,6 +60,10 @@ public class RightZone : MonoBehaviour
                 {   
                     nearbyArea.hapticSource.Stop();
                     nearbyArea.hapticPlaying = false;
+                }
+                if(contactCount == 1)
+                {
+                    KeepAchievements.instance.UnmatchedNurseAchievement();
                 }
                 GameManager.controladorAplicacion.stepCompleted();
                 GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.AplicarAntiseptico);
