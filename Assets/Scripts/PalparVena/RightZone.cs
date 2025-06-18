@@ -50,6 +50,7 @@ public class RightZone : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log($"Contact Count: {contactCount}");
         if (timerActive)
         {
             stayTimer += Time.deltaTime;
