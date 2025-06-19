@@ -28,7 +28,7 @@ public class ObjetosEnCarritoDetector : MonoBehaviour
         if (!ScriptActivo) return;
         if (cantidadAlcohol != 0 && cantidadCanula != 0 && cantidadLlaves != 0 && cantidadAposito != 0 && cantidadTorniquete!= 0 && cantidadSuero!= 0 && cantidadGasa!= 0)
         {
-            KeepAchievements.instance.EverythingInPlaceAchievement();
+            KeepAchievements.instance.UnlockAchievement(0);
             GameManager.controladorAplicacion.stepCompleted();
             GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.PrepararSistema);
         }

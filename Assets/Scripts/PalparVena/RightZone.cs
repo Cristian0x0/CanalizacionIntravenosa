@@ -50,7 +50,7 @@ public class RightZone : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log($"Contact Count: {contactCount}");
+        //Debug.Log($"Contact Count: {contactCount}");
         if (timerActive)
         {
             stayTimer += Time.deltaTime;
@@ -64,7 +64,7 @@ public class RightZone : MonoBehaviour
                 }
                 if(contactCount == 1)
                 {
-                    KeepAchievements.instance.UnmatchedNurseAchievement();
+                    KeepAchievements.instance.UnlockAchievement(3);
                 }
                 GameManager.controladorAplicacion.stepCompleted();
                 GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.AplicarAntiseptico);

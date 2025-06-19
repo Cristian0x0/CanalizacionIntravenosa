@@ -250,17 +250,17 @@ public class GameManager : MonoBehaviour
 
     public void CompleteSimulation()
     {
-        if (!ObjetosCaidos) KeepAchievements.instance.SteadyHandsAchievement();
-        if(elapsedTime < timeLimit) KeepAchievements.instance.TrueProfessionalAchievement();
+        if (!ObjetosCaidos) KeepAchievements.instance.UnlockAchievement(1);
+        if(elapsedTime < timeLimit) KeepAchievements.instance.UnlockAchievement(2);
         KeepAchievements.instance.SimulationCompleteTimes++;
 
         if (modoJuego != gameMode.Normal)
         {
-            KeepAchievements.instance.ReadyForActionAchievement();
+            KeepAchievements.instance.UnlockAchievement(6);
 
             if(modoJuego == gameMode.Expert)
             {
-                KeepAchievements.instance.ABrightFutureAchievement();
+                KeepAchievements.instance.UnlockAchievement(7);
             }
 
         }
