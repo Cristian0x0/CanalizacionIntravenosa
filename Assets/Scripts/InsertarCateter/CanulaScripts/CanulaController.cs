@@ -40,7 +40,7 @@ public class CanulaController : MonoBehaviour
             {
                 if(child != transform)
                 {
-                    GameObject.Destroy(child.gameObject);
+                    Destroy(child.gameObject);
                 }
             }
             Destroy(gameObject);

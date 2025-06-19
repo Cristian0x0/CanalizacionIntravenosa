@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4815777223497897428}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: EsparadrapoMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2303235314169647850}
   - component: {fileID: 6812369406767783417}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: HandGrabPose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6176319729465825215}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2704362717729045635}
   - component: {fileID: 4896657051004054885}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ControllerGrab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6716350093762303764}
   - component: {fileID: 4643436652133849050}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: HandGrabPose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 7392359492762059007}
   - component: {fileID: 2803423163397373709}
   - component: {fileID: 4674659810800929928}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: HandGrabInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 3119446800522387743}
   - component: {fileID: 5867578867156800795}
   - component: {fileID: 3156785784927796941}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Trozo
   m_TagString: TrozoEsparadrapo
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
@@ -521,7 +521,7 @@ MonoBehaviour:
   _maxGrabPoints: -1
   _rigidbody: {fileID: 4916866841340259512}
   _kinematicWhileSelected: 1
-  _throwWhenUnselected: 1
+  _throwWhenUnselected: 0
   Agarrado: 0
 --- !u!114 &4137210896810555037
 MonoBehaviour:
@@ -657,6 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrozoEsparatrapo: {fileID: 6447678137655271962}
   rb: {fileID: 4916866841340259512}
+  myCollider: {fileID: 6286399003273133278}
 --- !u!65 &6286399003273133278
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -725,7 +726,7 @@ GameObject:
   - component: {fileID: 9008400347614249007}
   - component: {fileID: 2768475427386483918}
   - component: {fileID: 7871317608675832025}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: HandGrabInteractable_mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5834657514896013415}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -871,7 +872,7 @@ GameObject:
   - component: {fileID: 2446714818777724725}
   - component: {fileID: 7760789156440632358}
   - component: {fileID: 900705554149551048}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

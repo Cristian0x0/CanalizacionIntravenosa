@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -50,8 +51,7 @@ public class KeepAchievements : MonoBehaviour
             }
         }
 
-        if (SimulationCompleteTimes == 1) UnlockAchievement(4);
-        if (SimulationCompleteTimes == 3) UnlockAchievement(5);
+        StartCoroutine(MainScreenAchievements());
     }
 
     //Funciones que se ejecutan al conseguir un logro
@@ -63,5 +63,12 @@ public class KeepAchievements : MonoBehaviour
         notifications.ShowNotification(index);
         Achieved[index] = true;
         AchievementsButtons[index].image.sprite = Achievements[index];
+    }
+
+    IEnumerator MainScreenAchievements()
+    {
+        yield return new WaitForSeconds(2f);
+        if (SimulationCompleteTimes == 1) UnlockAchievement(4);
+        if (SimulationCompleteTimes == 3) UnlockAchievement(5);
     }
 }

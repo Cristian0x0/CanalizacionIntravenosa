@@ -55,7 +55,8 @@ public class WastebasketBehaviour : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Gauze")) gauzeRemoved = true;
             else if (collision.gameObject.CompareTag("Torniquete")) tourniquetRemoved = true;
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
         else
         {
