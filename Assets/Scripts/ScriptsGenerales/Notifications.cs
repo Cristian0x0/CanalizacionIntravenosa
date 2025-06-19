@@ -15,6 +15,9 @@ public class Notifications : MonoBehaviour
     private Vector2 hiddenPos;
     private Vector2 visiblePos;
 
+    private Queue<int> notificationQueue = new Queue<int>();
+    private bool isShowing = false;
+
     private void Start()
     {
         visiblePos = toastPanel.anchoredPosition;
@@ -25,26 +28,34 @@ public class Notifications : MonoBehaviour
 
     public void ShowNotification(int i)
     {
-        toastPanel.GetComponent<Image>().sprite = notificationSprites[i];
-        StopAllCoroutines();
-        StartCoroutine(ShowToastCoroutine());
+        notificationQueue.Enqueue(i);
+        if (!isShowing)
+        {
+            StartCoroutine(ProcessNotifications());
+        }
     }
 
-    private IEnumerator ShowToastCoroutine()
+    private IEnumerator ProcessNotifications()
     {
-        toastPanel.gameObject.SetActive(true);
-        notificationSound.Play();
+        isShowing = true;
 
-        // Slide In
-        yield return StartCoroutine(Slide(toastPanel, hiddenPos, visiblePos, slideDuration));
+        while (notificationQueue.Count > 0)
+        {
+            int i = notificationQueue.Dequeue();
+            toastPanel.GetComponent<Image>().sprite = notificationSprites[i];
+            toastPanel.gameObject.SetActive(true);
+            notificationSound.Play();
 
-        // Wait
-        yield return new WaitForSeconds(visibleDuration);
+            yield return Slide(toastPanel, hiddenPos, visiblePos, slideDuration);
 
-        // Slide Out
-        yield return StartCoroutine(Slide(toastPanel, visiblePos, hiddenPos, slideDuration));
+            yield return new WaitForSeconds(visibleDuration);
 
-        toastPanel.gameObject.SetActive(false);
+            yield return Slide(toastPanel, visiblePos, hiddenPos, slideDuration);
+
+            toastPanel.gameObject.SetActive(false);
+        }
+
+        isShowing = false;
     }
 
     private IEnumerator Slide(RectTransform panel, Vector2 from, Vector2 to, float duration)
