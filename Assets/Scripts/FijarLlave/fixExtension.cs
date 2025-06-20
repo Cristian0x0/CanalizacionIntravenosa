@@ -63,7 +63,8 @@ public class fixExtension : MonoBehaviour
             completedStep = true;
 
             TrozoEsparadrapo.SetActive(true);
-            Destroy(tapeGrab.gameObject);
+            //Destroy(tapeGrab.gameObject);
+            tapeGrab.gameObject.SetActive(false);
 
         }
     }
