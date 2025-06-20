@@ -8,6 +8,7 @@ public class ReiniciarPosicion : MonoBehaviour
 
     [Tooltip("Opcional, para objetos conectados a otros, como es el caso del sistema de suero.")]
     [SerializeField] private Transform segundoObjetoOpcional;
+    [SerializeField] private AudioSource FloorContactSound;
     private Vector3 segundaPosicionInicial;
     private Quaternion segundaRotacionInicial;
 
@@ -35,7 +36,11 @@ public class ReiniciarPosicion : MonoBehaviour
     {
         if (collision.gameObject.tag == "Suelo")
         {
-            if(GameManager.controladorAplicacion.modoJuego == gameMode.Expert)
+            if (FloorContactSound != null)
+            {
+                FloorContactSound.Play();
+            }
+            if (GameManager.controladorAplicacion.modoJuego == gameMode.Expert)
             {
                 GameManager.controladorAplicacion.FailedSimulation();
             }

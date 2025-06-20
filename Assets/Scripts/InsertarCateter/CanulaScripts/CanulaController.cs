@@ -36,13 +36,14 @@ public class CanulaController : MonoBehaviour
                 GameManager.controladorAplicacion.stepCompleted();
                 GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.RecogerMaterial);
             }
-            foreach (Transform child in parent)
-            {
-                if(child != transform)
+
+                foreach (Transform child in parent)
                 {
-                    Destroy(child.gameObject);
+                    if (child != transform)
+                    {
+                        Destroy(child.gameObject);
+                    }
                 }
-            }
             Destroy(gameObject);
         }
     }

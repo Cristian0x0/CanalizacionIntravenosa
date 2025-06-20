@@ -10,6 +10,7 @@ public class ReiniciarPosicionLlave : MonoBehaviour
     [SerializeField] private ConectorALlave conectorALlave;
     [SerializeField] private GameObject cabeza;
     [SerializeField] private GameObject final;
+    [SerializeField] private AudioSource FloorContactSound;
     private Grabbable cabezaGrab;
     private Grabbable finalGrab;
 
@@ -28,6 +29,10 @@ public class ReiniciarPosicionLlave : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (FloorContactSound != null)
+        {
+            FloorContactSound.Play();
+        }
         if (collision.gameObject.tag == "Suelo")
         {
             if (GameManager.controladorAplicacion.modoJuego == gameMode.Expert)

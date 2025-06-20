@@ -12,6 +12,7 @@ public class CintaGrabbable : MonoBehaviour
     private MeshRenderer meshRenderer;
     private Transform Spawn;
     [SerializeField] private Collider myCollider;
+    private AudioSource PickSound;
 
     void Awake()
     {
@@ -25,12 +26,17 @@ public class CintaGrabbable : MonoBehaviour
     private void Start()
     {
         Spawn = transform.parent?.Find("Spawn");
+        PickSound = transform.parent?.Find("EsparadrapoSFX").GetComponent<AudioSource>();
     }
 
     void Update()
     {
         if (grabbable.Agarrado && !SoloUnUso)
         {
+            if (PickSound != null)
+            {
+                PickSound.Play();
+            }
             SoloUnUso = true;
             meshRenderer.enabled = true;
             GameObject nuevoTrozo = Instantiate(TrozoEsparatrapo, Spawn.position, Quaternion.identity);
@@ -38,6 +44,7 @@ public class CintaGrabbable : MonoBehaviour
         }
         else if (!grabbable.Agarrado && SoloUnUso)
         {
+            grabbable.enabled = false;
             GetComponent<Rigidbody>().isKinematic = false;
         }
     }
