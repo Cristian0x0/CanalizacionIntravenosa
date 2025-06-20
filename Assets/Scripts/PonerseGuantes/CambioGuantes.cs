@@ -10,6 +10,7 @@ public class CambioGuantes : MonoBehaviour
     public Material nuevoMaterial;
     [SerializeField] private Renderer PrimerObjeto;
     [SerializeField] private Renderer SegundoObjeto;
+    [SerializeField] private AudioSource GlovesSound;
     private Material materialDefault;
     private Renderer objectRenderer;
     private bool ScriptActivo = false;
@@ -46,6 +47,11 @@ public class CambioGuantes : MonoBehaviour
         {
             if (objectRenderer != null)
             {
+                if (GlovesSound != null)
+                {
+                    GlovesSound.Play();
+                }
+
                 bool esDefault = objectRenderer.sharedMaterial == materialDefault;
 
                 objectRenderer.sharedMaterial = esDefault ? nuevoMaterial : materialDefault;

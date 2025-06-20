@@ -55,11 +55,9 @@ public class ColisionSistemaSuero : MonoBehaviour
     {
         if (sistema != null && sePuedeConectar.boteColocado)
         {
-            Debug.Log("Obviamente entro");
             if (conexionSound != null)
             {
                 conexionSound.Play();
-                Debug.Log("Obviamente no entro");
             }
             sistema.GetComponent<SistemaGrabbable>().enabled = false;
 
