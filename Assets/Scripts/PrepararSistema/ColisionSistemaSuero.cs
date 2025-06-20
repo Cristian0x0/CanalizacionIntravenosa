@@ -16,11 +16,12 @@ public class ColisionSistemaSuero : MonoBehaviour
 
     private void Update()
     {
-        if (sistema != null)
+        if (sistema != null && !stepDone)
         {
             if (!sistema.GetComponent<SistemaGrabbable>().Agarrado)
             {
                 SoltarPincho();
+                stepDone = true;
             }
         }
     }
@@ -52,10 +53,8 @@ public class ColisionSistemaSuero : MonoBehaviour
 
     public void SoltarPincho()
     {
-        if (sistema != null && sePuedeConectar.boteColocado && !stepDone)
+        if (sistema != null && sePuedeConectar.boteColocado)
         {
-            stepDone = true;
-
             Debug.Log("Obviamente entro");
             if (conexionSound != null)
             {
