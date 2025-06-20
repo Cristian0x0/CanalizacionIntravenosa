@@ -10,6 +10,7 @@ public class ConectorALlave : MonoBehaviour
     [SerializeField] private GameObject colliders; //Estos hay que quitarlos para que el conector del sistema de suero no pueda ser cogido
     [SerializeField] private SoltarConectorSistema SoltarConectorSistemaCompleto;
     [SerializeField] private SoltarConectorSistema SoltarConectorSistemaCompleto2;
+    [SerializeField] private AudioSource conexionSound;
     private Grabbable grabbable;
     private Grabbable myGrab;
     private Rigidbody rb;
@@ -36,6 +37,10 @@ public class ConectorALlave : MonoBehaviour
     {
         if (other.CompareTag("Llave3Pasos") && colisionSistemaSuero.pinchoConectado && !stepDone)
         {
+            if (conexionSound != null)
+            {
+                conexionSound.Play();
+            }
             //rb.LockKinematic();
             grabbable = other.GetComponent<Grabbable>();
             if (grabbable != null)

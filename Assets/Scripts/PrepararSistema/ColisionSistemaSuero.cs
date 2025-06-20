@@ -7,9 +7,12 @@ public class ColisionSistemaSuero : MonoBehaviour
     private GameObject sistema;
     private Rigidbody rb;
     [SerializeField] private Collider colliderSistema;
+    [SerializeField] private AudioSource conexionSound;
 
     public ColisionSueroSoporte sePuedeConectar;
     [HideInInspector] public bool pinchoConectado = false;
+
+    private bool stepDone = false;
 
     private void Update()
     {
@@ -26,7 +29,6 @@ public class ColisionSistemaSuero : MonoBehaviour
     {
         if (other.CompareTag("SistemaSuero") && sePuedeConectar.boteColocado)
         {
-            Debug.Log("Colisionar colisiono");
             sistema = other.gameObject; // Guardamos referencia al bote
             rb = sistema.GetComponent<Rigidbody>();
             if (rb != null)
@@ -50,8 +52,16 @@ public class ColisionSistemaSuero : MonoBehaviour
 
     public void SoltarPincho()
     {
-        if (sistema != null && sePuedeConectar.boteColocado)
+        if (sistema != null && sePuedeConectar.boteColocado && !stepDone)
         {
+            stepDone = true;
+
+            Debug.Log("Obviamente entro");
+            if (conexionSound != null)
+            {
+                conexionSound.Play();
+                Debug.Log("Obviamente no entro");
+            }
             sistema.GetComponent<SistemaGrabbable>().enabled = false;
 
 

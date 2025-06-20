@@ -4,6 +4,7 @@ public class Torniquete : MonoBehaviour
 {
     private Transform hijo;
     private bool ScriptActivo = false;
+    [SerializeField] private AudioSource TorniqueteContact;
 
     private void ComprobarActivacionTorniquete(GameState state)
     {
@@ -24,6 +25,10 @@ public class Torniquete : MonoBehaviour
     {
         if (other.CompareTag("Torniquete") && ScriptActivo)
         {
+            if (TorniqueteContact != null)
+            {
+                TorniqueteContact.Play();
+            }
             if (hijo != null)
             {
                 hijo.gameObject.SetActive(true);

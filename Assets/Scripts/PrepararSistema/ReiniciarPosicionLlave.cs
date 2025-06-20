@@ -29,12 +29,12 @@ public class ReiniciarPosicionLlave : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (FloorContactSound != null)
-        {
-            FloorContactSound.Play();
-        }
         if (collision.gameObject.tag == "Suelo")
         {
+            if (FloorContactSound != null)
+            {
+                FloorContactSound.Play();
+            }
             if (GameManager.controladorAplicacion.modoJuego == gameMode.Expert)
             {
                 GameManager.controladorAplicacion.FailedSimulation();

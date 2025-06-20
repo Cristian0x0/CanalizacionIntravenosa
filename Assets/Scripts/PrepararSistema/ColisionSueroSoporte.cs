@@ -13,6 +13,8 @@ public class ColisionSueroSoporte : MonoBehaviour
     [HideInInspector]
     public bool boteColocado = false;
 
+    [SerializeField] private AudioSource conexionSound;
+
     private void Start()
     {
         GameManager.EnEstadoJuegoCambiado += ComprobarActivacion;
@@ -61,6 +63,10 @@ public class ColisionSueroSoporte : MonoBehaviour
     {
         if (boteEnZona != null && ScriptActivo && !boteColocado)
         {
+            if (conexionSound != null)
+            {
+                conexionSound.Play();
+            }
             boteEnZona.GetComponent<SueroGrabbable>().enabled = false;
 
             Transform puntoMasCercano = ObtenerPuntoMasCercano(boteEnZona.transform.position);

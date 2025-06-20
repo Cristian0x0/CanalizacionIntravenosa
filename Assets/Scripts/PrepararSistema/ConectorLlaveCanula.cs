@@ -5,6 +5,7 @@ using UnityEngine;
 public class ConectorLlaveCanula : MonoBehaviour
 {
     [SerializeField] private GameObject colliders;
+    [SerializeField] private AudioSource conexionSound;
     private Grabbable myGrab;
     private ReiniciarPosicion reiniciarPosicion;
     private Rigidbody rb;
@@ -26,9 +27,13 @@ public class ConectorLlaveCanula : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("ConectorCateter") || other.CompareTag("Gancho") && ICanEnter)
+        if ((other.CompareTag("ConectorCateter") || other.CompareTag("Gancho")) && ICanEnter)
         {
-            
+            if (conexionSound != null)
+            {
+                conexionSound.Play();
+            }
+
             if (fixedJoint != null) Destroy(fixedJoint);
 
             myGrab.enabled = false;
