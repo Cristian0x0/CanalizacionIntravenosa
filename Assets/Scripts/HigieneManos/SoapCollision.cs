@@ -6,6 +6,7 @@ public class SoapCollision : MonoBehaviour
     [HideInInspector] public bool stepDone = false;
 
     [SerializeField] private Collider soapCollider;
+    [SerializeField] private AudioSource soapSound;
 
     private void Start()
     {
@@ -34,6 +35,10 @@ public class SoapCollision : MonoBehaviour
     {
         if (other.CompareTag("Hands") && !stepDone)
         {
+            if (soapSound != null)
+            {
+                soapSound.Play();
+            }
             stepDone = true;
         }
     }
