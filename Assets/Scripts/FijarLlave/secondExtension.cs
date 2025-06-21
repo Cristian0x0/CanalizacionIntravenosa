@@ -1,4 +1,5 @@
 using Oculus.Interaction;
+using System.Collections;
 using UnityEngine;
 
 public class secondExtension : MonoBehaviour
@@ -12,12 +13,14 @@ public class secondExtension : MonoBehaviour
     [SerializeField] private fixExtension firstTape;
 
     [SerializeField] private GameObject TrozoEsparadrapo;
+    [SerializeField] private Grabbable LlaveGrab;
 
 
     void Update()
     {
         if (tubeIn && tapeIn && !completedStep && firstTape.completedStep)
         {
+            completedStep = true;
 
             // Asegurarse de que no tenga un joint previo
             if (fixedJoint != null) Destroy(fixedJoint);
@@ -25,20 +28,20 @@ public class secondExtension : MonoBehaviour
             if (tapeGrab == null || rb == null) return;
 
             tapeGrab.enabled = false;
+            LlaveGrab.enabled = false;
+
+            rb.isKinematic = true;
 
             // Opcional: bloquear rotación si quieres que no gire más
             rb.angularVelocity = Vector3.zero;
             rb.linearVelocity = Vector3.zero;
 
             //Ubicarlo en la posicion del cateter
-            rb.position = transform.position;
-            rb.rotation = transform.rotation;
+            rb.MovePosition(transform.position);
+            rb.MoveRotation(transform.rotation);
 
-            // Crear joint fijo entre este objeto y el conector
-            fixedJoint = rb.gameObject.AddComponent<FixedJoint>();
-            fixedJoint.connectedBody = GetComponent<Rigidbody>();
+            StartCoroutine(CrearJointDespuesDeFrame());
 
-            completedStep = true;
 
             TrozoEsparadrapo.SetActive(true);
             //Destroy(tapeGrab.gameObject);
@@ -51,6 +54,7 @@ public class secondExtension : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (completedStep) return;
         if (other.CompareTag("TuboLlave"))
         {
             tubeIn = true;
@@ -65,6 +69,7 @@ public class secondExtension : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (completedStep) return;
         if (other.CompareTag("TuboLlave"))
         {
             tubeIn = false;
@@ -75,5 +80,20 @@ public class secondExtension : MonoBehaviour
             tapeIn = false;
             tapeGrab = null;
         }
+    }
+
+    IEnumerator CrearJointDespuesDeFrame()
+    {
+        yield return new WaitForFixedUpdate();
+
+        fixedJoint = rb.gameObject.AddComponent<FixedJoint>();
+        fixedJoint.connectedBody = GetComponent<Rigidbody>();
+
+        yield return new WaitForFixedUpdate();
+
+        rb.isKinematic = false;
+
+        LlaveGrab.enabled = true;
+
     }
 }
