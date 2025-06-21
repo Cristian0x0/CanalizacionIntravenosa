@@ -10,6 +10,7 @@ public class MainMenuBehaviour : MonoBehaviour
     [SerializeField] private GameObject MainButtons;
     [SerializeField] private GameObject Settings;
     [SerializeField] private GameObject AchievementsPanel;
+    [SerializeField] private GameObject InfoPanel;
     [SerializeField] TextMeshProUGUI infoModeText;
     [SerializeField] TextMeshProUGUI AchievementTitleText;
     [SerializeField] TextMeshProUGUI AchievementDescriptionText;
@@ -24,6 +25,7 @@ public class MainMenuBehaviour : MonoBehaviour
         Settings.SetActive(false);
         InGameMenu.SetActive(false);
         AchievementsPanel.SetActive(false);
+        InfoPanel.SetActive(false);
     }
 
     public void startButton()
@@ -31,6 +33,7 @@ public class MainMenuBehaviour : MonoBehaviour
         GameManager.controladorAplicacion.CambiarEstadoJuego(GameState.PrimeraHigieneDeManos);
         MainMenu.SetActive(false);
         AchievementsPanel.SetActive(false);
+        InfoPanel.SetActive(false);
         InGameMenu.SetActive(true);
     }
 
@@ -94,9 +97,19 @@ public class MainMenuBehaviour : MonoBehaviour
         AchievementsPanel.SetActive(!AchievementsPanel.activeSelf);
     }
 
+    public void InfoButton()
+    {
+        InfoPanel.SetActive(!InfoPanel.activeSelf);
+    }
+
     public void CloseButton()
     {
         AchievementsPanel.SetActive(false);
+    }
+
+    public void CloseInfoButton()
+    {
+        InfoPanel.SetActive(false);
     }
 
     public void EverythingInPlaceButton()
