@@ -1,2 +1,4 @@
-# CanalizacionIntravenosa
- 
+# Importante
+Este proyecto utiliza scripts propios de meta para el correcto funcionamiento de las gafas de realidad virtual. Uno de estos scripts (Grabbable, para coger objetos) ha sido modificado para ser adaptado a las necesidades de este proyecto. Sin embargo, GitHub no recoge este script, ya que como es un script propio de meta a través de un paquete de la Asset Store este se descarga directamente del propio paquete sin tener en cuenta mi scriopt modificado. Como resultado si se descarga el proyecto directamente desde el repositorio de github saldrán mensajes de variable perdida (es lo único que se ha cambiado en el script de meta, solo una nueva variable). Si se desea probar el correcto funcionamiento del proyecto, he subido a drive un zip que contiene todos los scripts, incluidos los de meta:
+
+https://drive.google.com/drive/folders/10LFX26FvXdRrnJWwvlwZO-xkekOuhXIL?usp=sharing
